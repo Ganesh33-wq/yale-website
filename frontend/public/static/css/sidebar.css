@@ -1,0 +1,45 @@
+/* Sticky Sidebar Styles */
+.sidebar-fixed {
+    position: sticky;
+    top: 120px; /* Adjusted to account for the fixed header */
+    z-index: 90;
+    transition: all 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .sidebar-fixed {
+        position: relative;
+        top: 0;
+    }
+}
+
+/* Add some visual enhancements to the contact form */
+.contact-form-widget {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+.contact-form-widget:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.widget-title {
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.widget-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #0aa6d7;
+    border-radius: 3px;
+}

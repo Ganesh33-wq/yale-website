@@ -1,0 +1,863 @@
+/* ========== Service Pages Common Styles ========== */
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(34,175,219,0.05) 0%, rgba(34,175,219,0) 100%);
+    z-index: -1;
+}
+
+.section-tag {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.tag-line {
+    width: 40px;
+    height: 2px;
+    background: #22afdb;
+    margin-right: 1rem;
+}
+
+.section-tag h6 {
+    color: #22afdb;
+    margin: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #2c3e50;
+}
+
+.hero-content .highlight {
+    color: #22afdb;
+    position: relative;
+    display: inline-block;
+}
+
+.hero-content .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: rgba(34,175,219,0.2);
+    z-index: -1;
+}
+
+.course-paths {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.path-tag {
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 500;
+    color: #22afdb;
+    border: 1px solid rgba(34,175,219,0.2);
+    transition: all 0.3s ease;
+}
+
+.path-tag:hover {
+    background: #22afdb;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.cta-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hero-image {
+    position: relative;
+    padding: 2rem;
+}
+
+.image-wrapper {
+    position: relative;
+}
+
+.main-image {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.floating-card {
+    position: absolute;
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.floating-card i {
+    color: #22afdb;
+    font-size: 1.25rem;
+}
+
+.floating-card span {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.card-2 {
+    bottom: 15%;
+    right: -5%;
+    animation-delay: 1s;
+}
+
+.experience-badge {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #22afdb;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(34,175,219,0.3);
+}
+
+.experience-badge .number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: block;
+}
+
+.experience-badge .text {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ========== Internship Programs Section ========== */
+.internship-programs {
+    position: relative;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    overflow: hidden;
+}
+
+.programs-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.program-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(34,175,219,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.program-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.program-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.program-icon {
+    width: 45px;
+    height: 45px;
+    background: rgba(34,175,219,0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.program-icon i {
+    font-size: 1.25rem;
+    color: #22afdb;
+    transition: all 0.3s ease;
+}
+
+.program-item:hover .program-icon {
+    background: #22afdb;
+}
+
+.program-item:hover .program-icon i {
+    color: white;
+}
+
+.program-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    background: rgba(34,175,219,0.1);
+    color: #22afdb;
+}
+
+.program-badge.hot {
+    background: rgba(255,87,87,0.1);
+    color: #ff5757;
+}
+
+.program-badge.trending {
+    background: rgba(255,159,67,0.1);
+    color: #ff9f43;
+}
+
+.program-item h3 {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 0.75rem;
+}
+
+.program-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.program-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.program-meta i {
+    color: #22afdb;
+}
+
+.program-desc {
+    color: #6c757d;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.program-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.program-tech span {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background: rgba(34,175,219,0.1);
+    color: #22afdb;
+    border-radius: 4px;
+}
+
+/* ========== Features Section ========== */
+.course-features {
+    background: #f8f9fa;
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    height: 100%;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(34,175,219,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.feature-icon i {
+    font-size: 1.75rem;
+    color: #22afdb;
+    transition: all 0.4s ease;
+}
+
+.feature-card:hover .feature-icon {
+    background: #22afdb;
+}
+
+.feature-card:hover .feature-icon i {
+    color: white;
+}
+
+.feature-card h4 {
+    font-size: 1.25rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: #6c757d;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ========== Key Highlights Section ========== */
+.key-highlights {
+    position: relative;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    overflow: hidden;
+}
+
+.highlights-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.highlights-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.highlights-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0 0;
+}
+
+.highlights-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.highlights-list li:last-child {
+    border-bottom: none;
+}
+
+.highlights-list li i {
+    color: #22afdb;
+    font-size: 1.25rem;
+    min-width: 24px;
+}
+
+.highlights-list li span {
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+/* ========== CTA Section ========== */
+.cta-section {
+    background: linear-gradient(135deg, #22afdb 0%, #1e9bc2 100%);
+    color: white;
+}
+
+.cta-wrapper {
+    padding: 3rem;
+    border-radius: 20px;
+}
+
+.cta-wrapper h2 {
+    color: white;
+    font-size: 2.25rem;
+}
+
+.cta-wrapper .fm-sec {
+    color: white;
+    opacity: 0.9;
+}
+
+.cta-wrapper p {
+    color: white;
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+/* ========== Project Domains Section ========== */
+.project-domains {
+    background: #f8f9fa;
+}
+
+.section-header {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.section-description {
+    color: #6c757d;
+    font-size: 1.1rem;
+}
+
+.section-divider {
+    width: 80px;
+    height: 3px;
+    background: #22afdb;
+    margin: 1.5rem auto 0;
+}
+
+.domain-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(34,175,219,0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.domain-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.domain-card .card-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.domain-card .icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: rgba(34,175,219,0.1);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.domain-card .icon-wrapper i {
+    font-size: 1.5rem;
+    color: #22afdb;
+    transition: all 0.3s ease;
+}
+
+.domain-card:hover .icon-wrapper {
+    background: #22afdb;
+}
+
+.domain-card:hover .icon-wrapper i {
+    color: white;
+}
+
+.domain-card h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-tags span {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(34,175,219,0.1);
+    color: #22afdb;
+    border-radius: 20px;
+}
+
+.domain-card .card-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.domain-card .card-body p {
+    color: #6c757d;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.domain-card .features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.domain-card .features span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.domain-card .features i {
+    color: #22afdb;
+}
+
+.domain-card .card-footer {
+    padding: 1.5rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.explore-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #22afdb;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.explore-btn:hover {
+    color: #1e9bc2;
+    gap: 0.75rem;
+}
+
+.project-count {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.project-count i {
+    color: #22afdb;
+}
+
+/* ========== Project Features Section ========== */
+.project-features {
+    background: white;
+}
+
+/* ========== Benefits Section ========== */
+.benefits-section {
+    background: #f8f9fa;
+}
+
+.benefits-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.benefits-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0 0;
+}
+
+.benefits-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.benefits-list li:last-child {
+    border-bottom: none;
+}
+
+.benefits-list li i {
+    color: #22afdb;
+    font-size: 1.25rem;
+    min-width: 24px;
+}
+
+.benefits-list li span {
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+/* ========== Banner Styles for Final Year Project ========== */
+.project-banner {
+    position: relative;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 6rem 0 8rem;
+}
+
+.banner-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.banner-shapes .shape-1,
+.banner-shapes .shape-2,
+.banner-shapes .shape-3 {
+    position: absolute;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+}
+
+.banner-shapes .shape-1 {
+    width: 300px;
+    height: 300px;
+    top: -100px;
+    left: -100px;
+}
+
+.banner-shapes .shape-2 {
+    width: 500px;
+    height: 500px;
+    bottom: -200px;
+    right: -200px;
+}
+
+.banner-shapes .shape-3 {
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    right: 10%;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 1;
+}
+
+.title-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50px;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.badge-icon {
+    margin-right: 0.5rem;
+}
+
+.banner-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.banner-description {
+    color: rgba(255,255,255,0.9);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.banner-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.banner-features .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+}
+
+.banner-features .feature-item i {
+    color: rgba(255,255,255,0.9);
+}
+
+.banner-image {
+    position: relative;
+    z-index: 1;
+}
+
+.project-card {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.project-card .card-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(34,175,219,0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-card .card-icon i {
+    color: #22afdb;
+    font-size: 1.25rem;
+}
+
+.project-card .card-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card .number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    line-height: 1;
+}
+
+.project-card .text {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* ========== Responsive Styles ========== */
+@media (max-width: 991px) {
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+
+    .hero-image {
+        margin-top: 3rem;
+    }
+
+    .floating-card {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .programs-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    .banner-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content h2 {
+        font-size: 1.75rem;
+    }
+
+    .course-paths {
+        gap: 0.5rem;
+    }
+
+    .path-tag {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .floating-card {
+        display: none;
+    }
+
+    .programs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .program-item {
+        padding: 1.25rem;
+    }
+
+    .feature-card {
+        padding: 1.5rem;
+    }
+
+    .banner-title {
+        font-size: 1.75rem;
+    }
+
+    .cta-wrapper {
+        padding: 2rem 1rem;
+    }
+
+    .cta-wrapper h2 {
+        font-size: 1.75rem;
+    }
+}
