@@ -1,5 +1,5 @@
 // COPILOT: Fetch helpers mirroring Django view contexts. Update endpoints to match Express routes. TODO: align JSON keys with Django template context.
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4000/api';
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://yaleinfotech.com/api';
 
 export async function getHome() {
   const res = await fetch(`${API_BASE}/home/`, { credentials: 'include' });

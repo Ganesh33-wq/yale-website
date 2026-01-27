@@ -396,7 +396,7 @@ const FinalYearProject = () => {
           const data = Object.fromEntries(formData.entries());
           
           try {
-            const response = await fetch('http://localhost:4000/api/project-inquiry', {
+            const response = await fetch('https://yaleinfotech.com/api/project-inquiry', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

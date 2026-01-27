@@ -1,25 +1,36 @@
 // COPILOT: React Router mapping of Django URL patterns (including trailing slashes). TODO: add routes per templates list (DJANGO_TEMPLATE_LIST). Keep paths/classnames unchanged when rendering components.
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import BlogList from './pages/BlogList';
-import BlogDetail from './pages/BlogDetail';
-import PythonTraining from './pages/PythonTraining';
-import JavaTraining from './pages/JavaTraining';
-import FullStackTraining from './pages/FullStackTraining';
-import DigitalMarketingCourse from './pages/DigitalMarketingCourse';
-import UIUXDesignCourse from './pages/UIUXDesignCourse';
-import AICourse from './pages/AICourse';
-import DataScienceCourse from './pages/DataScienceCourse';
-import CyberSecurityCourse from './pages/CyberSecurityCourse';
-import InternshipTraining from './pages/InternshipTraining';
-import FinalYearProject from './pages/FinalYearProject';
-import AdminLogin from './pages/AdminLogin';
-import AdminDashboard from './pages/AdminDashboard';
+
+// Lazy load all pages for code splitting
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
+const BlogList = lazy(() => import('./pages/BlogList'));
+const BlogDetail = lazy(() => import('./pages/BlogDetail'));
+const PythonTraining = lazy(() => import('./pages/PythonTraining'));
+const JavaTraining = lazy(() => import('./pages/JavaTraining'));
+const FullStackTraining = lazy(() => import('./pages/FullStackTraining'));
+const DigitalMarketingCourse = lazy(() => import('./pages/DigitalMarketingCourse'));
+const UIUXDesignCourse = lazy(() => import('./pages/UIUXDesignCourse'));
+const AICourse = lazy(() => import('./pages/AICourse'));
+const DataScienceCourse = lazy(() => import('./pages/DataScienceCourse'));
+const CyberSecurityCourse = lazy(() => import('./pages/CyberSecurityCourse'));
+const InternshipTraining = lazy(() => import('./pages/InternshipTraining'));
+const FinalYearProject = lazy(() => import('./pages/FinalYearProject'));
+const AdminLogin = lazy(() => import('./pages/AdminLogin'));
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+
+// Loading fallback component
+const PageLoader = () => (
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <div>Loading...</div>
+  </div>
+);
 
 const App = () => (
-  <Routes>
+  <Suspense fallback={<PageLoader />}>
+    <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/about/" element={<About />} />
     <Route path="/about" element={<About />} />
@@ -52,6 +63,7 @@ const App = () => (
     <Route path="/admin" element={<AdminLogin />} />
     <Route path="/admin/dashboard" element={<AdminDashboard />} />
   </Routes>
+  </Suspense>
 );
 
 export default App;

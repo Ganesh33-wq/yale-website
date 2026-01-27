@@ -33,7 +33,7 @@ npm run dev
 ## Environment
 - Node >=20, npm.
 - Frontend dev server: http://localhost:5173
-- Backend API: http://localhost:4000/api
+- Backend API: https://yaleinfotech.com/api
 
 ## TODOs
 - Replace placeholder payloads with real data from Django models.

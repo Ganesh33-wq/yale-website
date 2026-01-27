@@ -21,4 +21,16 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Split vendor chunks
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          // Add other large dependencies here if needed
+        },
+      },
+    },
+    chunkSizeWarningLimit: 600, // Increase limit slightly if needed
+  },
 });
