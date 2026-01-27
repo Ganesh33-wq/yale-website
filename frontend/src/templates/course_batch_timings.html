@@ -1,0 +1,286 @@
+<!-- Batch Timing -->
+<div class="detail-item batch-timing-container">
+    <div class="detail-icon">
+        <i class="fas fa-clock"></i>
+    </div>
+    <div class="detail-content">
+        <h3>Batch Timings</h3>
+        <p class="batch-subtitle">Next available batches starting soon</p>
+        <div class="batch-schedule">
+            {% for date in course.upcoming_batches|slice:":3" %}
+            <div class="batch-row">
+                <div class="batch-date">
+                    <span class="date-number">{{ date|slice:":2" }}</span>
+                    <span class="date-month">{{ date|slice:"3:5" }}/{{ date|slice:"6:" }}</span>
+                </div>
+                <div class="batch-info">
+                    <div class="batch-type">Mon (Mon - Fri)</div>
+                    <div class="batch-label">WEEKDAYS BATCH</div>
+                </div>
+                <div class="batch-time">
+                    <div class="time"><i class="fas fa-clock-o time-icon"></i> 08:00 AM (IST)</div>
+                    <div class="duration"><i class="fas fa-hourglass-half duration-icon"></i> (Class 2Hrs | 8Hrs) / Per Session</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="batch-note">
+            <i class="fas fa-info-circle"></i> Weekend batches also available. Contact us for more information.
+        </div>
+    </div>
+</div>
+
+<style>
+.batch-timing-container {
+    margin-bottom: 25px;
+}
+
+.batch-subtitle {
+    color: #6c757d;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.batch-schedule {
+    margin-top: 15px;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+
+.batch-schedule:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-color: #7ccee9;
+}
+
+.batch-row {
+    display: grid;
+    grid-template-columns: 100px 1fr 220px;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.batch-row:last-child {
+    border-bottom: none;
+}
+
+.batch-row:hover {
+    background-color: #f8f9fa;
+}
+
+.batch-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    color: #2c3e50;
+    background: rgba(124, 206, 233, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.date-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #22afdb;
+}
+
+.date-month {
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+.batch-info {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.batch-type {
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.batch-label {
+    color: #22afdb;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 4px;
+    display: inline-block;
+    padding: 2px 8px;
+    background: rgba(34, 175, 219, 0.1);
+    border-radius: 4px;
+}
+
+.batch-time {
+    text-align: center !important;
+}
+
+.time {
+    color: #2c3e50;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-icon, .duration-icon {
+    margin-right: 5px;
+    color: #22afdb;
+    font-size: 0.9rem;
+}
+
+.duration {
+    color: #dc3545;
+    font-size: 0.8rem;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.batch-note {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #6c757d;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 3px solid #22afdb;
+}
+
+@media (max-width: 992px) {
+    .batch-row {
+        grid-template-columns: 80px 1fr 180px;
+        padding: 15px;
+    }
+    
+    .date-number {
+        font-size: 1.3rem;
+    }
+}
+
+/* Mobile-focused improvements */
+@media (max-width: 768px) {
+    .batch-schedule {
+        border-radius: 10px;
+    }
+    
+    .batch-row {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 16px;
+        gap: 12px;
+    }
+    
+    .batch-date {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        flex-shrink: 0;
+    }
+    
+    .date-number {
+        font-size: 1.4rem;
+        margin-bottom: 2px;
+    }
+    
+    .date-month {
+        font-size: 0.7rem;
+        margin-top: 0;
+    }
+    
+    .batch-info {
+        flex: 1;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .batch-time {
+        width: 100%;
+        text-align: left;
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px dashed #eee;
+    }
+    
+    .time, .duration {
+        justify-content: center;
+    }
+    
+    .time {
+        font-size: 0.9rem;
+    }
+    
+    .duration {
+        font-size: 0.75rem;
+    }
+    
+    .time-icon, .duration-icon {
+        width: 16px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .batch-subtitle {
+        font-size: 0.8rem;
+    }
+    
+    .batch-row {
+        padding: 14px;
+    }
+    
+    .batch-date {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .date-number {
+        font-size: 1.2rem;
+    }
+    
+    .batch-type {
+        font-size: 0.9rem;
+    }
+    
+    .batch-label {
+        font-size: 0.7rem;
+    }
+    
+    .time {
+        font-size: 0.85rem;
+    }
+    
+    .duration {
+        font-size: 0.7rem;
+    }
+    
+    .batch-note {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+}
+
+.detail-content{
+    width: 100%;
+}
+</style>

@@ -1,506 +1,384 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import SEO from '../components/common/SEO';
+// COPILOT: React version of Django templates/home.html rendered inside Django base.html body markup.
+// Keeps HTML structure/classnames/IDs unchanged. Replaces Django template tags with static paths and SPA routes.
+import { useEffect, useMemo } from 'react';
+import baseTemplate from '../templates/base.html?raw';
+import homeTemplate from '../templates/home.html?raw';
+
+const urlMap = {
+  home: '/',
+  about: '/about/',
+  contact_page: '/contact/',
+  contact: '/api/contact/',
+  course_inquiry: '/api/course-inquiry/',
+  syllabus_download: '/api/syllabus-download/',
+  python_training: '/course/best-python-training-in-coimbatore/',
+  java_training: '/course/best-java-course-in-coimbatore/',
+  full_stack_training: '/course/best-full-stack-course-in-coimbatore/',
+  digital_marketing_course: '/course/best-digital-marketing-course-in-coimbatore/',
+  ui_ux_design_course: '/course/best-ui-ux-designer-course-in-coimbatore/',
+  ai_course: '/course/best-artificial-intelligence-course-in-coimbatore/',
+  data_science_course: '/course/best-data-science-course-in-coimbatore/',
+  cyber_security_course: '/course/best-cyber-security-course-in-coimbatore/',
+  internship_training: '/internship-training-in-coimbatore/',
+  final_year_project: '/services/final-year-project-center-in-coimbatore/',
+  project_samples: '/services/project-samples/',
+  blog_list: '/blog/',
+  blog_detail: '/blog/',
+  internship_inquiry: '/internship-inquiry/',
+};
+
+const extractBody = (html) => {
+  const match = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+  return match ? match[1] : html;
+};
+
+const stripBlocks = (html) => html
+  .replace(/\{%-?\s*extends[^%]*%\}/g, '')
+  .replace(/\{%-?\s*load[^%]*%\}/g, '')
+  .replace(/\{%-?\s*block title\s*-?%\}[\s\S]*?\{%-?\s*endblock\s*-?%\}/g, '')
+  .replace(/\{%-?\s*block content\s*-?%\}/g, '')
+  .replace(/\{%-?\s*block extra_js\s*-?%\}[\s\S]*?\{%-?\s*endblock\s*-?%\}/g, '')
+  .replace(/\{%-?\s*endblock\s*-?%\}/g, '')
+  .replace(/\{%-?\s*csrf_token\s*-?%\}/g, '')
+  // Handle {% if %}...{% else %}...{% endif %} blocks
+  .replace(/\{%-?\s*if\s+[^%]*%\}[\s\S]*?\{%-?\s*endif\s*-?%\}/g, '')
+  // Handle standalone {% if %}, {% else %}, {% endif %}
+  .replace(/\{%-?\s*if\s+[^%]*%\}/g, '')
+  .replace(/\{%-?\s*else\s*-?%\}/g, '')
+  .replace(/\{%-?\s*endif\s*-?%\}/g, '')
+  // Handle {% for %}...{% endfor %}
+  .replace(/\{%-?\s*for\s+[^%]*%\}/g, '')
+  .replace(/\{%-?\s*endfor\s*-?%\}/g, '')
+  // Handle {% include %}
+  .replace(/\{%-?\s*include\s+[^%]*%\}/g, '')
+  // Handle {% with %}...{% endwith %}
+  .replace(/\{%-?\s*with\s+[^%]*%\}/g, '')
+  .replace(/\{%-?\s*endwith\s*-?%\}/g, '');
+
+const replaceStaticsAndUrls = (html) => {
+  let output = html.replace(/\{%-?\s*static\s+'([^']+)'\s*-?%\}/g, '/static/$1');
+  Object.entries(urlMap).forEach(([key, value]) => {
+    output = output.replace(new RegExp(`\{%-?\\s*url\\s+'${key}'[^%]*%\}`, 'g'), value);
+  });
+  output = output.replace(/\{\{\s*title\s*\}\}/g, '');
+  output = output.replace(/\{\{\s*content\s*\}\}/g, '');
+  return output;
+};
+
+const injectContent = (baseHtml, pageHtml) => {
+  const body = extractBody(baseHtml);
+  const cleanedPage = stripBlocks(pageHtml);
+  const merged = body.replace(
+    /<main>[\s\S]*?<\/main>/,
+    `<main>\n${cleanedPage}\n</main>`
+  );
+  return replaceStaticsAndUrls(merged);
+};
 
 const Home = () => {
-  useEffect(() => {
-    // Initialize AOS
-    if (window.AOS) {
-      window.AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 100
-      });
-    }
+  const renderedHtml = useMemo(() => injectContent(baseTemplate, homeTemplate), []);
 
-    // Generate random positions for floating icons
+  useEffect(() => {
+    // Set page title
+    document.title = 'Yale It Skill Hub Best Software Training Institute in Coimbatore';
+
+    // Generate random positions for floating icons (matches Django home.html script)
     const root = document.documentElement;
-    for (let i = 1; i <= 15; i++) {
+    for (let i = 1; i <= 15; i += 1) {
       root.style.setProperty(`--random-${i}`, Math.random());
     }
+
+    // Small delay to ensure DOM is fully rendered before initializing animations
+    const initAnimations = () => {
+      // Match loader fade-out behavior from base.html
+      const loader = document.querySelector('.loader-wrapper');
+      if (loader) {
+        loader.classList.add('fade-out');
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 300);
+      }
+
+      // Check if animations already initialized by app.js
+      const animationsInitialized = document.body.classList.contains('animations-initialized');
+      
+      // Initialize WOW animations FIRST (matches app.js wow() function)
+      if (window.WOW && !animationsInitialized) {
+        const wow = new window.WOW({
+          boxClass: 'wow',
+          animateClass: 'animated',
+          mobile: true,
+          live: true,
+        });
+        wow.init();
+      }
+
+      // Initialize AOS (matches base.html script)
+      if (window.AOS) {
+        // Reset AOS for React rendered content
+        window.AOS.init({
+          duration: 1000,
+          once: true,
+          offset: 100,
+        });
+        // Refresh AOS after init to detect all elements
+        setTimeout(() => {
+          window.AOS.refresh();
+        }, 200);
+      }
+
+      // Mark animations as initialized
+      document.body.classList.add('animations-initialized');
+
+      // Initialize floating icons parallax effect (from app.js DOMContentLoaded)
+      const container = document.querySelector('.hero-banner-1');
+      const icons = document.querySelectorAll('.floating-icon');
+      
+      if (container && icons.length) {
+        let targetX = 0;
+        let targetY = 0;
+        let currentX = 0;
+        let currentY = 0;
+        let animationFrame;
+
+        const handleMovement = (e) => {
+          const x = e.touches ? e.touches[0].clientX : e.clientX;
+          const y = e.touches ? e.touches[0].clientY : e.clientY;
+          const w = window.innerWidth / 2;
+          const h = window.innerHeight / 2;
+          targetX = (x - w) / w;
+          targetY = (y - h) / h;
+          if (!animationFrame) {
+            animationFrame = requestAnimationFrame(updateParallax);
+          }
+        };
+
+        const updateParallax = () => {
+          currentX += (targetX - currentX) * 0.1;
+          currentY += (targetY - currentY) * 0.1;
+          icons.forEach((icon, index) => {
+            const depth = (index % 3 + 1) * 10;
+            const moveX = currentX * depth;
+            const moveY = currentY * depth;
+            icon.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          });
+          if (Math.abs(targetX - currentX) > 0.001 || Math.abs(targetY - currentY) > 0.001) {
+            animationFrame = requestAnimationFrame(updateParallax);
+          } else {
+            animationFrame = null;
+          }
+        };
+
+        // Add floating animation with random offsets
+        icons.forEach((icon, index) => {
+          const delay = Math.random() * 2;
+          const duration = 2 + Math.random();
+          icon.style.animation = `
+            floatIn 1s ${index * 0.1}s ease-out forwards,
+            float ${duration}s ${delay}s ease-in-out infinite
+          `;
+        });
+
+        container.addEventListener('mousemove', handleMovement);
+        container.addEventListener('touchmove', handleMovement, { passive: true });
+        container.addEventListener('mouseleave', () => {
+          targetX = 0;
+          targetY = 0;
+          if (!animationFrame) {
+            animationFrame = requestAnimationFrame(updateParallax);
+          }
+        });
+      }
+
+      // Initialize jQuery plugins
+      if (window.jQuery) {
+        const $ = window.jQuery;
+
+        // Initialize tilt effect on .educate-tilt elements (matches app.js tilt() function)
+        if ($.fn.tilt) {
+          $('.educate-tilt').each(function () {
+            const self = $(this);
+            let options = self.data('tilt-options');
+            if (options) {
+              if (typeof options === 'string') {
+                try {
+                  options = JSON.parse(options);
+                } catch (e) {
+                  options = { maxTilt: 2, speed: 700, scale: 1, glare: false, maxGlare: 0 };
+                }
+              }
+              self.tilt(options);
+            } else {
+              self.tilt({ maxTilt: 2, speed: 700, scale: 1, glare: false, maxGlare: 0 });
+            }
+          });
+        }
+
+        // Initialize slick slider for team section (Why Choose Us images)
+        if ($.fn.slick) {
+          $('.team-slider:not(.slick-initialized)').slick({
+            dots: true,
+            arrows: false,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            centerMode: false,
+            variableWidth: false,
+            responsive: [
+              { breakpoint: 1200, settings: { slidesToShow: 2, slidesToScroll: 1 } },
+              { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+            ],
+          });
+        }
+
+        // Initialize magnific popup for videos (matches app.js magnifying() function)
+        if ($.fn.magnificPopup) {
+          $('.video-popup, .popup-youtube').magnificPopup({
+            type: 'iframe',
+            mainClass: 'mfp-fade',
+            removalDelay: 160,
+            preloader: true,
+            fixedContentPos: false,
+          });
+        }
+
+        // Mobile nav setup (matches app.js header() function)
+        const mainMenuNav = document.querySelector('.main-menu__nav');
+        const mobileNavContainer = document.querySelector('.mobile-nav__container');
+        if (mainMenuNav && mobileNavContainer && !mobileNavContainer.innerHTML.trim()) {
+          mobileNavContainer.innerHTML = mainMenuNav.innerHTML;
+
+          // Add dropdown toggle buttons for mobile
+          $('.mobile-nav__container .main-menu__list .dropdown > a').each(function () {
+            const self = $(this);
+            if (!self.find('button').length) {
+              const toggleBtn = document.createElement('BUTTON');
+              toggleBtn.setAttribute('aria-label', 'dropdown toggler');
+              toggleBtn.innerHTML = '<i class="fa fa-angle-down"></i>';
+              self.append(toggleBtn);
+              $(toggleBtn).on('click', function (e) {
+                e.preventDefault();
+                $(this).toggleClass('expanded');
+                $(this).parent().toggleClass('expanded');
+                $(this).parent().parent().children('ul').slideToggle();
+              });
+            }
+          });
+        }
+
+        // Mobile nav toggler
+        $('.mobile-nav__toggler').off('click').on('click', function (e) {
+          e.preventDefault();
+          $('.mobile-nav__wrapper').toggleClass('expanded');
+          $('body').toggleClass('locked');
+        });
+
+        // Sticky header logic (matches app.js header() function)
+        const stickyHeaderContent = document.querySelector('.sticky-header__content');
+        const mainMenu = document.querySelector('.main-menu');
+        if (stickyHeaderContent && mainMenu && !stickyHeaderContent.innerHTML.trim()) {
+          stickyHeaderContent.innerHTML = mainMenu.innerHTML;
+        }
+
+        $(window).off('scroll.stickyHeader').on('scroll.stickyHeader', function () {
+          const headerScrollPos = 130;
+          const stricky = $('.stricked-menu, .stricky-header');
+          if ($(window).scrollTop() > headerScrollPos) {
+            stricky.addClass('stricky-fixed');
+          } else {
+            stricky.removeClass('stricky-fixed');
+          }
+        });
+
+        // Back to top functionality (matches app.js BackToTop() function)
+        const scrollTopPath = $('.scroll-top path');
+        if (scrollTopPath.length) {
+          const path = scrollTopPath[0];
+          const pathLength = path.getTotalLength();
+          path.style.transition = path.style.WebkitTransition = 'none';
+          path.style.strokeDasharray = pathLength + ' ' + pathLength;
+          path.style.strokeDashoffset = pathLength;
+          path.getBoundingClientRect();
+          path.style.transition = path.style.WebkitTransition = 'stroke-dashoffset 10ms linear';
+
+          const updateDashOffset = function () {
+            const scrollTop = $(window).scrollTop();
+            const docHeight = $(document).height() - $(window).height();
+            const dashOffset = pathLength - (scrollTop * pathLength) / docHeight;
+            path.style.strokeDashoffset = dashOffset;
+          };
+          updateDashOffset();
+          $(window).on('scroll.backToTop', updateDashOffset);
+
+          $(window).on('scroll.backToTopVisible', function () {
+            if ($(window).scrollTop() > $(window).height()) {
+              $('.scroll-top').addClass('scroll-top--active');
+            } else {
+              $('.scroll-top').removeClass('scroll-top--active');
+            }
+          });
+        }
+
+        // Trigger initial scroll event
+        $(window).trigger('scroll');
+      }
+
+      // Course features section animation (from app.js)
+      const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll('.course-feature-card').forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.1}s`;
+        cardObserver.observe(card);
+      });
+
+      // Gallery items flip animation with intersection observer
+      const galleryObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll('.gallery-item').forEach((item) => {
+        galleryObserver.observe(item);
+      });
+    };
+
+    // Initialize animations after a small delay to ensure DOM is ready
+    const timeoutId = setTimeout(initAnimations, 100);
+
+    // Cleanup function
+    return () => {
+      clearTimeout(timeoutId);
+      if (window.jQuery) {
+        const $ = window.jQuery;
+        $(window).off('scroll.stickyHeader');
+        $(window).off('scroll.backToTop');
+        $(window).off('scroll.backToTopVisible');
+        // Destroy slick slider if initialized
+        if ($('.team-slider').hasClass('slick-initialized')) {
+          $('.team-slider').slick('unslick');
+        }
+      }
+    };
   }, []);
 
   return (
-    <>
-      <SEO 
-        title="Yale IT Skill Hub Best Software Training Institute in Coimbatore"
-        description="Yale IT Skill Hub, Coimbatore project-based software training and software course in Coimbatore, with hands-on experience and IT industrial skills."
-        keywords="Best IT training institute in coimbatore, IT training institute in coimbatore, Best IT training academy in coimbatore, Software Training Institute in Coimbatore"
-      />
-
-      {/* Hero Banner Start */}
-      <section className="hero-banner-1">
-        <div className="container position-relative">
-          {/* Floating Icons */}
-          <div className="floating-icons">
-            <img src="/static/media/icons/banner/html.png" alt="HTML" title="HTML" className="floating-icon floating-icon-1" />
-            <img src="/static/media/icons/banner/react.png" alt="React" title="React" className="floating-icon floating-icon-2" />
-            <img src="/static/media/icons/banner/python.png" alt="Python" title="Python" className="floating-icon floating-icon-3" />
-            <img src="/static/media/icons/banner/java.png" alt="Java" title="Java" className="floating-icon floating-icon-4" />
-            <img src="/static/media/icons/banner/figma.png" alt="Figma" title="Figma" className="floating-icon floating-icon-5" />
-            <img src="/static/media/icons/banner/instagram.png" alt="Instagram" title="Instagram" className="floating-icon floating-icon-6" />
-            <img src="/static/media/icons/banner/facebook.png" alt="Facebook" title="Facebook" className="floating-icon floating-icon-7" />
-            <img src="/static/media/icons/banner/linux.png" alt="Linux" title="Linux" className="floating-icon floating-icon-8" />
-            <img src="/static/media/icons/banner/mongo.png" alt="MongoDB" title="MongoDB" className="floating-icon floating-icon-9" />
-            <img src="/static/media/icons/banner/laravel.png" alt="Laravel" title="Laravel" className="floating-icon floating-icon-10" />
-          </div>
-
-          <div className="content">
-            <div className="text_block wow fadeInUp" data-wow-delay="800ms">
-              <div className="row justify-content-center text-center">
-                <div className="col-xl-8 col-lg-10">
-                  <h1 className="mb-16 title mt-5 mt-md-0" style={{color: '#0aa6d7'}} data-aos="fade-up">
-                    Top Software Training Institute in <span className="fm-sec" style={{color: '#2bac44 !important'}}>Coimbatore</span>
-                  </h1>
-                  <h4 className="mb-48" data-aos="fade-up" data-aos-delay="200">
-                    Master in-demand skills and kickstart your IT career.
-                  </h4>
-                  <div className="btn_block d-flex justify-content-center" data-aos="fade-up" data-aos-delay="400">
-                    <a href="#courses-section" className="educate-btn sec">
-                      <span className="educate-btn__curve"></span>Explore Our Courses
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Hero Banner End */}
-
-      {/* About Area Start */}
-      <section className="py-60">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-6 mb-48 mb-lg-0" data-aos="fade-right">
-              <div className="heading mb-16">
-                <h6 className="color-primary mb-8">–––– Job-Ready Training</h6>
-                <h2>
-                  Get your dream IT job with <span className="fm-sec">Coimbatore's Top Software Training Institute</span>
-                </h2>
-              </div>
-              <p className="mb-32">
-                At Yale IT Skill Hub, we offer the best IT courses in Coimbatore, designed to equip students with job-oriented skills that meet industry demands. Whether you're looking to advance your career or start a new one in the tech world, our courses provide comprehensive training and hands-on experience to ensure you're job-ready. With expert instructors and a curriculum customized to the latest industry trends, Yale IT Skill Hub stands out as a renowned software training institute in Manchester of South India, Coimbatore.
-              </p>
-              <div className="text-start wow fadeInUp" data-wow-delay="600ms">
-                <Link to="/about" className="educate-btn">
-                  <span className="educate-btn__curve"></span>Read More
-                </Link>
-              </div>
-            </div>
-            <div className="col-lg-6" data-aos="fade-left">
-              <div className="educate-tilt">
-                <img loading="lazy" src="/static/media/resources/about-1.webp" alt="Software Training Institute in Coimbatore" title="Software Training Institute in Coimbatore" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* About Area End */}
-
-      {/* Courses Area Start */}
-      <section className="courses-2 py-60" id="courses-section">
-        <div className="container">
-          <div className="section-title mb-48 text-center mx-auto" data-aos="fade-up">
-            <div className="heading">
-              <h6 className="color-primary mb-8">Popular Courses</h6>
-              <h2>Explore our industry-ready IT courses<span className="fm-sec">&nbsp;in Coimbatore</span></h2>
-              <p className="text-center mt-2 mb-4 mx-auto">
-                Yale IT Skill Hub offers a wide range of comprehensive IT courses to equip students with the skills to excel in the ever-evolving tech industry.
-              </p>
-            </div>
-          </div>
-          <div className="row">
-            {/* Python Course */}
-            <div className="col-lg-6">
-              <div className="course__card mb-24" data-aos="fade-up" data-aos-delay="0" data-aos-duration="800">
-                <div className="course__card__icon">
-                  <img loading="lazy" src="/static/media/courses/verified-badge.webp" alt="certified python course" title="certified python course" />
-                </div>
-                <div className="course__card__content">
-                  <div className="left__block">
-                    <h4 className="mb-4p pb-3"><Link to="/course/python-training">Full stack Python Course</Link></h4>
-                    <p>Our Full stack Python course combines theory with hands-on coding practice, ensuring you master real-world applications. We focus on project-based learning to help you build practical skills and gain confidence in Python development.</p>
-                  </div>
-                  <div className="right__block">
-                    <img loading="lazy" className="verified-badge mt-2 mb-3" src="/static/media/icons/python.png" alt="python course" title="python course" />
-                    <Link to="/course/python-training" className="educate-btn sm mx-xl-auto me-2">
-                      <span className="educate-btn__curve"></span>Know More
-                    </Link>
-                  </div>
-                  <img loading="lazy" src="/static/media/shapes/vector-1.png" alt="shape" title="shape" className="bottom_vector" />
-                </div>
-              </div>
-            </div>
-
-            {/* Java Course */}
-            <div className="col-lg-6">
-              <div className="course__card mb-24" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
-                <div className="course__card__icon">
-                  <img loading="lazy" src="/static/media/courses/verified-badge.webp" alt="certified java course" title="certified java course" />
-                </div>
-                <div className="course__card__content">
-                  <div className="left__block">
-                    <h4 className="mb-4p pb-3"><Link to="/course/java-training">Full stack Java Course</Link></h4>
-                    <p>In our Full stack Java course, you'll learn through a mix of detailed lessons and real-world projects, building expertise in Java programming. Our instructors guide you step-by-step to develop robust applications, from core concepts to advanced topics.</p>
-                  </div>
-                  <div className="right__block">
-                    <img loading="lazy" className="verified-badge mt-2 mb-3" src="/static/media/icons/java.png" alt="java course" title="java course" />
-                    <Link to="/course/java-training" className="educate-btn sm mx-xl-auto me-2">
-                      <span className="educate-btn__curve"></span>Know More
-                    </Link>
-                  </div>
-                  <img loading="lazy" src="/static/media/shapes/vector-1.png" alt="shape" title="shape" className="bottom_vector" />
-                </div>
-              </div>
-            </div>
-
-            {/* Full Stack Course */}
-            <div className="col-lg-6">
-              <div className="course__card mb-24" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
-                <div className="course__card__icon">
-                  <img loading="lazy" src="/static/media/courses/verified-badge.webp" alt="certified mern stack course" title="certified mern stack course" />
-                </div>
-                <div className="course__card__content">
-                  <div className="left__block">
-                    <h4 className="mb-4p pb-3"><Link to="/course/full-stack-training">Full stack Developer MERN Course</Link></h4>
-                    <p>This course emphasizes hands-on experience with MERN technologies, from front-end design with React to back-end development with Node.js. You will work on live projects to apply what you learn and develop real-world applications.</p>
-                  </div>
-                  <div className="right__block">
-                    <img loading="lazy" className="verified-badge mt-2 mb-3" src="/static/media/icons/node.png" alt="mern stack course" title="mern stack course" />
-                    <Link to="/course/full-stack-training" className="educate-btn sm mx-xl-auto me-2">
-                      <span className="educate-btn__curve"></span>Know More
-                    </Link>
-                  </div>
-                  <img loading="lazy" src="/static/media/shapes/vector-1.png" alt="shape" title="shape" className="bottom_vector" />
-                </div>
-              </div>
-            </div>
-
-            {/* Digital Marketing Course */}
-            <div className="col-lg-6">
-              <div className="course__card mb-24" data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
-                <div className="course__card__icon">
-                  <img loading="lazy" src="/static/media/courses/verified-badge.webp" alt="certified digital marketing course" title="certified digital marketing course" />
-                </div>
-                <div className="course__card__content">
-                  <div className="left__block">
-                    <h4 className="mb-4p pb-3"><Link to="/course/digital-marketing">Digital Marketing Course</Link></h4>
-                    <p>Our digital marketing course uses case studies, interactive sessions, and practical exercises to teach strategies that work in the real world. We ensure you gain expertise in SEO, SEM, content marketing, and more through live campaigns and practical tasks.</p>
-                  </div>
-                  <div className="right__block">
-                    <img loading="lazy" className="verified-badge mt-2 mb-3" src="/static/media/icons/digi.png" alt="digital marketing course" title="digital marketing course" />
-                    <Link to="/course/digital-marketing" className="educate-btn sm mx-xl-auto me-2">
-                      <span className="educate-btn__curve"></span>Know More
-                    </Link>
-                  </div>
-                  <img loading="lazy" src="/static/media/shapes/vector-1.png" alt="shape" title="shape" className="bottom_vector" />
-                </div>
-              </div>
-            </div>
-
-            {/* UI/UX Course */}
-            <div className="col-lg-6">
-              <div className="course__card mb-24 mb-lg-0" data-aos="fade-up" data-aos-delay="800" data-aos-duration="800">
-                <div className="course__card__icon">
-                  <img loading="lazy" src="/static/media/courses/verified-badge.webp" alt="certified ui ux designer course" title="certified ui ux designer course" />
-                </div>
-                <div className="course__card__content">
-                  <div className="left__block">
-                    <h4 className="mb-4p pb-3"><Link to="/course/ui-ux-design">UI UX Designer Course</Link></h4>
-                    <p>Through hands-on projects and design tools like Adobe XD and Figma, you will learn how to create user-friendly and engaging digital interfaces. Our course focuses on the entire design process, from wireframing to prototyping and user testing.</p>
-                  </div>
-                  <div className="right__block">
-                    <img loading="lazy" className="verified-badge mt-2 mb-3" src="/static/media/icons/figma.png" alt="Ui/Ux Designer course" title="Ui/Ux Designer course" />
-                    <Link to="/course/ui-ux-design" className="educate-btn sm mx-xl-auto me-2">
-                      <span className="educate-btn__curve"></span>Know More
-                    </Link>
-                  </div>
-                  <img loading="lazy" src="/static/media/shapes/vector-1.png" alt="shape" title="shape" className="bottom_vector" />
-                </div>
-              </div>
-            </div>
-
-            {/* AI Course */}
-            <div className="col-lg-6">
-              <div className="course__card mb-24" data-aos="fade-up" data-aos-delay="1000" data-aos-duration="800">
-                <div className="course__card__icon">
-                  <img loading="lazy" src="/static/media/courses/verified-badge.webp" alt="certified ai course" title="certified ai course" />
-                </div>
-                <div className="course__card__content">
-                  <div className="left__block">
-                    <h4 className="mb-4p pb-3"><Link to="/course/ai">AI Course</Link></h4>
-                    <p>Our AI course uses real-world datasets and practical exercises to teach machine learning and deep learning. You will work on projects and build AI models that can be implemented in various industries, ensuring you gain industry-ready skills.</p>
-                  </div>
-                  <div className="right__block">
-                    <img loading="lazy" className="verified-badge mt-2 mb-3" src="/static/media/icons/ai.png" alt="ai course" title="ai course" />
-                    <Link to="/course/ai" className="educate-btn sm mx-xl-auto me-2">
-                      <span className="educate-btn__curve"></span>Know More
-                    </Link>
-                  </div>
-                  <img loading="lazy" src="/static/media/shapes/vector-1.png" alt="shape" title="shape" className="bottom_vector" />
-                </div>
-              </div>
-            </div>
-
-            {/* Data Science Course */}
-            <div className="col-lg-6">
-              <div className="course__card mb-24 mb-lg-0" data-aos="fade-up" data-aos-delay="1200" data-aos-duration="800">
-                <div className="course__card__icon">
-                  <img loading="lazy" src="/static/media/courses/verified-badge.webp" alt="certified data science course" title="certified data science course" />
-                </div>
-                <div className="course__card__content">
-                  <div className="left__block">
-                    <h4 className="mb-4p pb-3"><Link to="/course/data-science">Data Science Course</Link></h4>
-                    <p>This course combines theoretical learning with practical exercises, allowing you to analyze real-world data and apply statistical and machine learning models. You will work on hands-on projects to develop skills in data analysis, visualization, and predictive modeling.</p>
-                  </div>
-                  <div className="right__block">
-                    <img loading="lazy" className="verified-badge mt-2 mb-3" src="/static/media/icons/data.png" alt="data science course" title="data science course" />
-                    <Link to="/course/data-science" className="educate-btn sm mx-xl-auto me-2">
-                      <span className="educate-btn__curve"></span>Know More
-                    </Link>
-                  </div>
-                  <img loading="lazy" src="/static/media/shapes/vector-1.png" alt="shape" title="shape" className="bottom_vector" />
-                </div>
-              </div>
-            </div>
-
-            {/* Cyber Security Course */}
-            <div className="col-lg-6">
-              <div className="course__card" data-aos="fade-up" data-aos-delay="1400" data-aos-duration="800">
-                <div className="course__card__icon">
-                  <img loading="lazy" src="/static/media/courses/verified-badge.webp" alt="certified cybersecurity course" title="certified cybersecurity course" />
-                </div>
-                <div className="course__card__content">
-                  <div className="left__block">
-                    <h4 className="mb-4p pb-2"><Link to="/course/cyber-security">Cybersecurity Course</Link></h4>
-                    <p>Our cybersecurity course includes practical labs, case studies, and real-world simulations to teach you how to protect against cyber threats. You'll gain hands-on experience in ethical hacking, network security, and risk management techniques.</p>
-                  </div>
-                  <div className="right__block">
-                    <img loading="lazy" className="verified-badge mt-2 mb-3" src="/static/media/icons/security.png" alt="cybersecurity course" title="cybersecurity course" />
-                    <Link to="/course/cyber-security" className="educate-btn sm mx-xl-auto me-2">
-                      <span className="educate-btn__curve"></span>Know More
-                    </Link>
-                  </div>
-                  <img loading="lazy" src="/static/media/shapes/vector-1.png" alt="shape" title="shape" className="bottom_vector" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Courses Area End */}
-
-      {/* Features Area Start */}
-      <section className="py-60">
-        <div className="container">
-          <div className="section-title mb-48 mx-auto text-center">
-            <div className="heading">
-              <h6 className="color-primary mb-8">Key Highlights</h6>
-              <h2>Key highlights of our <span className="fm-sec">IT courses</span></h2>
-            </div>
-          </div>
-          <div className="row row-gap-4 justify-content-center mt-4">
-            <div className="cards row">
-              <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div className="card" data-aos="zoom-in" data-aos-delay="100">
-                  <span className="close"></span>
-                  <span className="arrow"></span>
-                  <article>
-                    <h4 style={{fontSize: '20px'}}>Expert trainers with industry experience</h4>
-                    <div className="pic">
-                      <img loading="lazy" src="/static/media/resources/features/teacher.webp" alt="expert trainers with industry experience" title="expert trainers with industry experience" />
-                    </div>
-                  </article>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div className="card" data-aos="zoom-in" data-aos-delay="100">
-                  <span className="close"></span>
-                  <span className="arrow"></span>
-                  <article>
-                    <h4 style={{fontSize: '20px'}}>Hands-on projects and real-time learning</h4>
-                    <div className="pic">
-                      <img loading="lazy" src="/static/media/resources/features/hands-on-projects.webp" alt="hands-on projects and real-time learning" title="hands-on projects and real-time learning" />
-                    </div>
-                  </article>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div className="card" data-aos="zoom-in" data-aos-delay="100">
-                  <span className="close"></span>
-                  <span className="arrow"></span>
-                  <article>
-                    <h4 style={{fontSize: '20px'}}>Flexible batch timings (weekdays/weekends)</h4>
-                    <div className="pic">
-                      <img loading="lazy" src="/static/media/resources/features/batch.webp" alt="flexible batch timings" title="flexible batch timings" />
-                    </div>
-                  </article>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div className="card" data-aos="zoom-in" data-aos-delay="100">
-                  <span className="close"></span>
-                  <span className="arrow"></span>
-                  <article>
-                    <h4 style={{fontSize: '20px'}}>Interactive learning methods (online & offline)</h4>
-                    <div className="pic">
-                      <img loading="lazy" src="/static/media/resources/features/online-class.webp" alt="interactive learning methods" title="interactive learning methods" />
-                    </div>
-                  </article>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div className="card" data-aos="zoom-in" data-aos-delay="100">
-                  <span className="close"></span>
-                  <span className="arrow"></span>
-                  <article>
-                    <h4 style={{fontSize: '20px'}}>Comprehensive current trend courses are offered</h4>
-                    <div className="pic">
-                      <img loading="lazy" src="/static/media/resources/features/course-syllabus.webp" alt="comprehensive courses" title="comprehensive courses" />
-                    </div>
-                  </article>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div className="card" data-aos="zoom-in" data-aos-delay="100">
-                  <span className="close"></span>
-                  <span className="arrow"></span>
-                  <article>
-                    <h4 style={{fontSize: '20px'}}>100% placement assistance</h4>
-                    <div className="pic">
-                      <img loading="lazy" src="/static/media/resources/features/placement.webp" alt="100% placement assistance" title="100% placement assistance" />
-                    </div>
-                  </article>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Features Area End */}
-
-      {/* Placement Section Start */}
-      <div className="py-30 bg-white">
-        <div className="container">
-          <div className="section-title mb-48 row justify-content-between gap-md-0 gap-4">
-            <div className="heading col-12 col-md-3 col-lg-4">
-              <h6 className="color-primary mb-8">–––– Our Students</h6>
-              <h2>100% Placement Assistance <span className="fm-sec">for Every Student</span></h2>
-            </div>
-            <div className="col-12 col-md-9 col-lg-8">
-              <p>At Yale IT Skill Hub, we provide 100% placement assistance for every student. Our strong connections with top companies ensure that you have access to guaranteed IT placements. Our dedicated placement team supports you with resume building, interview preparation, and placement drives, ensuring you are fully prepared for the competitive job market.</p>
-            </div>
-          </div>
-          
-          {/* Gallery Grid */}
-          <div className="gallery-grid mt-5">
-            <div className="row g-4">
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-                <div key={num} className="col-lg-3 col-md-3" data-aos="flip-left" data-aos-delay="100">
-                  <div className="gallery-item">
-                    <div className="gallery-image">
-                      <img loading="lazy" src={`/static/media/resources/placements/placement-${num}.webp`} alt={`Placement ${num}`} className="img-fluid" />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Brand Logos */}
-          <div className="row mb-5 align-items-center justify-content-center text-center mt-5">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-              <div key={num} className="col-lg-3 mb-3">
-                <img loading="lazy" src={`/static/media/brand/brand-${num}.png`} alt="Placement Partners" title="Placement Partners" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      {/* Placement Section End */}
-
-      {/* Testimonials Section */}
-      <section className="py-30 px-5">
-        <iframe 
-          title="Testimonials" 
-          src="https://widget.tagembed.com/2152553"
-          style={{width:'100%', height:'600px', border:'none'}}
-        ></iframe>
-      </section>
-
-      {/* Blog Section Start */}
-      <section className="py-60">
-        <div className="container">
-          <div className="section-title mb-48">
-            <div className="heading">
-              <h6 className="color-primary mb-8" style={{textAlign: 'center'}}>Blogs</h6>
-              <h2 className="mb-5">Tech Insights for <span className="fm-sec">Tomorrow's Innovators</span></h2>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-lg-4 col-md-6">
-              <div className="blog_card mb-24 mb-xl-0" data-aos="fade-up" data-aos-delay="100">
-                <div className="blog_card_img_block">
-                  <img loading="lazy" src="/static/media/blog/b-1.webp" alt="Career Success 2025" />
-                  <p className="date">9 May 2024</p>
-                </div>
-                <div className="blog_card_text_block">
-                  <h4 className="mb-8">
-                    <Link className="blog_title" to="/blog">Why Software Skills are the Key to Career Success in 2025</Link>
-                  </h4>
-                  <p className="mb-24">Discuss the growing demand for software professionals, top skills in demand, and how training can bridge the gap between job seekers and opportunities.</p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <Link to="/blog" className="h6 color-primary educate_link_btn">
-                      Read More<i className="far fa-chevron-right"></i>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="blog_card mb-24 mb-xl-0" data-aos="fade-up" data-aos-delay="100">
-                <div className="blog_card_img_block">
-                  <img loading="lazy" src="/static/media/blog/b-2.webp" alt="Top IT Courses" />
-                  <p className="date">9 May 2024</p>
-                </div>
-                <div className="blog_card_text_block">
-                  <h4 className="mb-8">
-                    <Link className="blog_title" to="/blog">Top 5 Software Courses to Kickstart Your IT Career</Link>
-                  </h4>
-                  <p className="mb-24">Explore in-demand courses like Python, Data Science, Full-Stack Development, and how each course prepares you for high-paying roles.</p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <Link to="/blog" className="h6 color-primary educate_link_btn">
-                      Read More<i className="far fa-chevron-right"></i>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="blog_card" data-aos="fade-up" data-aos-delay="100">
-                <div className="blog_card_img_block">
-                  <img loading="lazy" src="/static/media/blog/b-3.webp" alt="Hands-On Training" />
-                  <p className="date">9 May 2024</p>
-                </div>
-                <div className="blog_card_text_block">
-                  <h4 className="mb-8">
-                    <Link className="blog_title" to="/blog">The Importance of Hands-On Training in IT Education</Link>
-                  </h4>
-                  <p className="mb-24">Highlight how practical learning, live projects, and internships enhance job readiness compared to theory-based programs...</p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <Link to="/blog" className="h6 color-primary educate_link_btn">
-                      Read More<i className="far fa-chevron-right"></i>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Blog Section End */}
-    </>
+    <div dangerouslySetInnerHTML={{ __html: renderedHtml }} />
   );
 };
 

@@ -1,0 +1,2414 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <title>Internship Training in Coimbatore</title>
+    <meta name="description" content="Yale IT Skill Hub IT internship training in Coimbatore for undergraduate and postgraduate students, providing hands-on experience and industry exposure.">
+    <meta name="keywords" content="internship training in coimbatore, internship jobs coimbatore, internship training with stipend">
+
+    <!-- Page Title Banner Start -->
+    <section class="page_title_banner">
+        <div class="container">
+            <div class="content">
+                <div class="title">
+                    <h1>Internship training in Coimbatore</h1>
+                    <img src="{% static 'media/shapes/tag-2.png' %}" alt="icon" title="icon" class="tag">
+                </div>
+                <div class="educate-tilt"
+                    data-tilt-options='{ "glare": false, "maxGlare": 0, "maxTilt": 2, "speed": 700, "scale": 1 }'>
+                    <img src="{% static 'media/resources/page_title.webp' %}" alt="Internship Training in Coimbatore" title="Internship Training in Coimbatore" class="banner-title-img">
+                </div>
+                <img src="{% static 'media/shapes/circle-lines-2.png' %}" alt="icon" title="icon" class="circle_vector">
+            </div>
+        </div>
+        <!-- Breadcrumb Navigation -->
+        <div class="breadcrumb-wrapper">
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="breadcrumb-item">Services</li>
+                        <li class="breadcrumb-item active" aria-current="page">Internship Training</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        
+    </section>
+    <!-- Page Title Banner End -->
+
+    <!-- Hero Section Start -->
+    <section class="hero-section py-80">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="hero-content">
+                        <div class="section-tag">
+                            <span class="tag-line"></span>
+                            <h6>Transform Your Career</h6>
+                        </div>
+                        <h2 class="mb-4">Launch Your Career with <span class="highlight">Real-World Experience</span></h2>
+                        <p class="lead mb-4">Are you a college student looking to gain hands-on experience in the field you're passionate about? Yale IT offers internship training in Coimbatore specifically designed for students pursuing various academic paths.</p>
+                        
+                        <div class="course-paths">
+                            <div class="path-tag">B.E</div>
+                            <div class="path-tag">B.Sci</div>
+                            <div class="path-tag">B.Com</div>
+                            <div class="path-tag">MCA</div>
+                            <div class="path-tag">MBA</div>
+                            <div class="path-tag">CSE</div>
+                            <div class="path-tag">IT</div>
+                            <div class="path-tag">EEE</div>
+                            <div class="path-tag">ECE</div>
+                        </div>
+
+                        <p class="mt-4">Our internships provide the perfect opportunity to apply academic knowledge to real-world scenarios, allowing you to develop practical skills that will enhance your future career. At Yale IT, we are committed to helping students bridge the gap between theory and practice, preparing you for the challenges ahead.</p>
+
+                        <div class="cta-buttons mt-5">
+                            <a href="#internship-application-form" class="educate-btn"><span class="educate-btn__curve"></span>Apply Now</a>   
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="hero-image">
+                        <div class="image-wrapper educate-tilt" 
+                            data-tilt-options='{ "glare": false, "maxGlare": 0, "maxTilt": 2, "speed": 700, "scale": 1 }'>
+                            <img src="{% static 'media/services/internship-training/intership-training.webp' %}" alt="Internship Training" title="Internship Training" class="main-image">
+                            <div class="floating-card card-2">
+                                <i class="fas fa-certificate"></i>
+                                <span>Industry Certificate</span>
+                            </div>
+                            <div class="experience-badge">
+                                <span class="number">100+</span>
+                                <span class="text">Students Trained</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Internship Programs Section Start -->
+    <section class="internship-programs py-20">
+        <div class="container">
+            <div class="section-heading text-center mb-5" data-aos="fade-up">
+                <h6 class="color-primary mb-8">–––– Our Programs</h6>
+                <h2>Internship Training <span class="fm-sec">Programs</span> We Offer</h2>
+                <p class="mt-3">Choose from our diverse range of internship programs designed to kickstart your career</p>
+            </div>
+
+            <div class="programs-wrapper" data-aos="fade-up">
+                <div class="program-filters">
+                    <div class="filter-group">
+                        <label>Category:</label>
+                        <div class="category-pills">
+                            <button class="pill active" data-category="all">All</button>
+                            <button class="pill" data-category="fullstack">Full Stack</button>
+                            <button class="pill" data-category="frontend">Frontend</button>
+                            <button class="pill" data-category="mobile">Mobile</button>
+                            <button class="pill" data-category="testing">Testing</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="programs-grid">
+                    <!-- Python Full Stack -->
+                    <div class="program-item" data-category="fullstack">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="program-badge hot">Most Popular</div>
+                        </div>
+                        <h3>Full Stack Python</h3>
+                        <div class="program-meta">
+                            <span><i class="fas fa-clock"></i> 1 Week - 1 Month</span>
+                        </div>
+                        <p class="program-desc">Learn to build full-stack applications using Python with frameworks like Django and Flask, and frontend technologies.</p>
+                        <div class="program-tech">
+                            <span>Django</span>
+                            <span>Flask</span>
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+
+                    <!-- Java Full Stack -->
+                    <div class="program-item" data-category="fullstack">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <div class="program-badge trending">Trending</div>
+                        </div>
+                        <h3>Full Stack Java</h3>
+                        <div class="program-meta">
+                            <span><i class="fas fa-clock"></i> 1 Week - 1 Month</span>
+                        </div>
+                        <p class="program-desc">Master full-stack Java development with Spring Boot, and frontend technologies like HTML, CSS, and JavaScript.</p>
+                        <div class="program-tech">
+                            <span>Spring Boot</span>
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+
+                    <!-- Digital Marketing -->
+                    <div class="program-item" data-category="marketing">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <div class="program-badge">High Demand</div>
+                        </div>
+                        <h3>Digital Marketing</h3>
+                        <div class="program-meta">
+                            <span><i class="fas fa-clock"></i> 1 Week - 1 Month</span>
+                        </div>
+                        <p class="program-desc">Gain expertise in SEO, SEM, social media strategies, and analytics to boost business growth and online presence.</p>
+                        <div class="program-tech">
+                            <span>SEO</span>
+                            <span>SEM</span>
+                            <span>Analytics</span>
+                        </div>
+                    </div>
+
+                    <!-- Android Development -->
+                    <div class="program-item" data-category="mobile">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fab fa-android"></i>
+                            </div>
+                            <div class="program-badge">Popular</div>
+                        </div>
+                        <h3>Android Development</h3>
+                        <div class="program-meta">
+                            <span><i class="fas fa-clock"></i> 1 Week - 1 Month</span>
+                        </div>
+                        <p class="program-desc">Learn to develop mobile apps with intuitive interfaces, seamless functionality, and API integration.</p>
+                        <div class="program-tech">
+                            <span>Android SDK</span>
+                            <span>Kotlin</span>
+                            <span>APIs</span>
+                        </div>
+                    </div>
+
+                    <!-- Selenium Testing -->
+                    <div class="program-item" data-category="testing">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-vial"></i>
+                            </div>
+                            <div class="program-badge">Essential</div>
+                        </div>
+                        <h3>Selenium Testing</h3>
+                        <div class="program-meta">
+                            <span><i class="fas fa-clock"></i> 1 Week - 1 Month</span>
+                        </div>
+                        <p class="program-desc">Master Selenium for automated web testing, including writing test scripts and CI/CD integration.</p>
+                        <div class="program-tech">
+                            <span>Selenium</span>
+                            <span>TestNG</span>
+                            <span>CI/CD</span>
+                        </div>
+                    </div>
+
+                    <!-- MERN Stack -->
+                    <div class="program-item" data-category="fullstack">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <div class="program-badge hot">Most Popular</div>
+                        </div>
+                        <h3>MERN Stack</h3>
+                        <div class="program-meta">
+                            <span><i class="fas fa-clock"></i> 1 Week - 1 Month</span>
+                        </div>
+                        <p class="program-desc">Develop full-stack applications using MongoDB, Express.js, React, and Node.js with complete integration.</p>
+                        <div class="program-tech">
+                            <span>MongoDB</span>
+                            <span>Express</span>
+                            <span>React</span>
+                            <span>Node.js</span>
+                        </div>
+                    </div>
+
+                    <!-- MEAN Stack -->
+                    <div class="program-item" data-category="fullstack">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fab fa-angular"></i>
+                            </div>
+                            <div class="program-badge trending">Trending</div>
+                        </div>
+                        <h3>MEAN Stack</h3>
+                        <div class="program-meta">
+                            <span><i class="fas fa-clock"></i> 1 Week - 1 Month</span>
+                        </div>
+                        <p class="program-desc">Build dynamic web applications using MongoDB, Express.js, Angular, and Node.js stack.</p>
+                        <div class="program-tech">
+                            <span>MongoDB</span>
+                            <span>Express</span>
+                            <span>Angular</span>
+                            <span>Node.js</span>
+                        </div>
+                    </div>
+
+                    <!-- Web Design -->
+                    <div class="program-item" data-category="frontend">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div class="program-badge">Creative</div>
+                        </div>
+                        <h3>Web Design</h3>
+                        <div class="program-meta">
+                            <span><i class="fas fa-clock"></i> 1 Week - 1 Month</span>
+                        </div>
+                        <p class="program-desc">Learn responsive web design principles, focusing on UX/UI design and front-end development.</p>
+                        <div class="program-tech">
+                            <span>UI/UX</span>
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+
+                    <!-- Web Development -->
+                    <div class="program-item" data-category="frontend">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="program-badge hot">Most Popular</div>
+                        </div>
+                        <h3>Web Development</h3>
+                        <div class="program-meta">
+                            <span><i class="fas fa-clock"></i> 1 Week - 1 Month</span>
+                        </div>
+                        <p class="program-desc">Master creating dynamic and responsive websites with HTML, CSS, JavaScript, and server-side functionality.</p>
+                        <div class="program-tech">
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                            <span>PHP/MySQL</span>
+                        </div>
+                    </div>
+
+                    <!-- Frontend Development -->
+                    <div class="program-item" data-category="frontend">
+                        <div class="program-header">
+                            <div class="program-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <div class="program-badge">Essential</div>
+                        </div>
+                        <h3>Frontend Development</h3>
+                        <div class="program-meta">
+                            <span><i class="fas fa-clock"></i> 1 Week - 1 Month</span>
+                        </div>
+                        <p class="program-desc">Focus on building engaging, user-friendly interfaces ensuring responsive and visually appealing web experiences.</p>
+                        <div class="program-tech">
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                            <span>React/Vue</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Program Details Modal -->
+        <div id="programDetailsModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-body">
+                    <!-- Content will be dynamically loaded -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Internship Programs Section End -->
+
+    <!-- Flexible Internship Durations Section Start -->
+    <section class="duration-showcase">
+        <div class="container">
+            <div class="row justify-content-center g-0">
+                <div class="col-lg-8 text-center">
+                    <div class="title-badge" data-aos="fade-up">
+                        <i class="fas fa-clock badge-icon"></i>
+                        <span>Flexible Durations</span>
+                    </div>
+                    <h2 class="section-title" data-aos="fade-up">Flexible Internship Durations to Fit Your Needs</h2>
+                    <p class="lead-text" data-aos="fade-up">At Yale IT, we understand that each student has different availability and learning needs. That's why we offer flexible internship durations that can be adjusted to fit your schedule.</p>
+                </div>
+            </div>
+
+            <div class="duration-grid" data-aos="fade-up">
+                <div class="duration-item" data-duration="1 Week">
+                    <div class="duration-card">
+                        <div class="duration-card">
+                            <div class="card-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Quick Start</h3>
+                                <p>1 Week Intensive</p>
+                                <div class="card-details">
+                                    <span class="duration">7 Days</span>
+                                    <span class="focus">Perfect for basic skill development</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="duration-item" data-duration="10 Days">
+                    <div class="duration-card">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Extended</h3>
+                            <p>10 Days Program</p>
+                            <div class="card-details">
+                                <span class="duration">10 Days</span>
+                                <span class="focus">Ideal for comprehensive learning</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="duration-item" data-duration="15 Days">
+                    <div class="duration-card">
+                        <div class="card-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Standard</h3>
+                            <p>15 Days Training</p>
+                            <div class="card-details">
+                                <span class="duration">15 Days</span>
+                                <span class="focus">Complete skill development</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="duration-item" data-duration="21 Days">
+                    <div class="duration-card">
+                        <div class="card-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Advanced</h3>
+                            <p>21 Days Immersion</p>
+                            <div class="card-details">
+                                <span class="duration">21 Days</span>
+                                <span class="focus">Deep dive with projects</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="duration-item" data-duration="1 Month">
+                    <div class="duration-card">
+                        <div class="card-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Professional</h3>
+                            <p>1 Month Complete</p>
+                            <div class="card-details">
+                                <span class="duration">30 Days</span>
+                                <span class="focus">Full professional preparation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .duration-showcase {
+                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+                padding: 3rem 0;
+            }
+
+            .title-badge {
+                display: inline-flex;
+                align-items: center;
+                padding: 0.5rem 1rem;
+                background: rgba(34,175,219,0.1);
+                border-radius: 50px;
+                color: #22afdb;
+                margin-bottom: 1rem;
+            }
+
+            .badge-icon {
+                margin-right: 0.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                font-weight: 700;
+                color: #2c3e50;
+                margin-bottom: 1rem;
+            }
+
+            .lead-text {
+                color: #6c757d;
+                margin-bottom: 2rem;
+            }
+
+            .duration-grid {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                gap: 1rem;
+                margin: 2rem 0;
+            }
+
+            .duration-card {
+                background: white;
+                border-radius: 12px;
+                padding: 1.5rem;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            }
+
+            .duration-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(34,175,219,0.15);
+            }
+
+            .card-icon {
+                width: 50px;
+                height: 50px;
+                background: rgba(34,175,219,0.1);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1rem;
+                transition: all 0.3s ease;
+            }
+
+            .card-icon i {
+                color: #22afdb;
+                font-size: 1.25rem;
+                transition: all 0.3s ease;
+            }
+
+            .duration-card:hover .card-icon {
+                background: #22afdb;
+            }
+
+            .duration-card:hover .card-icon i {
+                color: white;
+            }
+
+            .card-content {
+                text-align: center;
+                width: 100%;
+            }
+
+            .card-content h3 {
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: #2c3e50;
+                margin-bottom: 0.5rem;
+            }
+
+            .card-content p {
+                color: #6c757d;
+                font-size: 0.875rem;
+                margin-bottom: 1rem;
+            }
+
+            .card-details {
+                opacity: 1;
+                transform: none;
+                border-top: 1px solid rgba(34,175,219,0.1);
+                padding-top: 1rem;
+                margin-top: 0.5rem;
+            }
+
+            .card-details .duration {
+                display: block;
+                font-size: 1.125rem;
+                font-weight: 700;
+                color: #22afdb;
+                margin-bottom: 0.5rem;
+            }
+
+            .card-details .focus {
+                display: block;
+                font-size: 0.813rem;
+                color: #6c757d;
+            }
+
+            @media (max-width: 1200px) {
+                .duration-grid {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+
+            @media (max-width: 991px) {
+                .duration-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            @media (max-width: 576px) {
+                .duration-grid {
+                    grid-template-columns: 1fr;
+                    gap: 1.5rem;
+                }
+
+                .duration-card {
+                    padding: 1.25rem;
+                }
+
+                .card-content h3 {
+                    font-size: 1.1rem;
+                }
+
+                .card-details .duration {
+                    font-size: 1rem;
+                }
+
+                .card-details .focus {
+                    font-size: 0.875rem;
+                }
+            }
+        </style>
+    </section>
+    <!-- Flexible Internship Durations Section End -->
+
+    <!-- Internship Application Form Section Start -->
+    <section class="application-form-section py-80" id="internship-application-form">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mb-5">
+                    <div class="title-badge" data-aos="fade-up">
+                        <i class="fas fa-paper-plane badge-icon"></i>
+                        <span>Apply Now</span>
+                    </div>
+                    <h2 class="section-title" data-aos="fade-up">Internship Application Form</h2>
+                    <p class="lead-text" data-aos="fade-up">Ready to apply for one of our internship programs? Fill out our simple application form to get started on your journey to hands-on learning and career growth.</p>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="application-form-wrapper" data-aos="fade-up">
+                        <form id="internshipApplicationForm" class="application-form">
+                             
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                                <label for="name">Full Name</label>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-4">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                                        <label for="email">Email Address</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-4">
+                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone Number" required>
+                                        <label for="phone">Phone Number</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-floating mb-4">
+                                        <input type="text" class="form-control" id="college" name="college" placeholder="College Name" required>
+                                        <label for="college">College Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating mb-4">
+                                        <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
+                                        <label for="city">City</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-4">
+                                        <input type="text" class="form-control" id="department" name="department" placeholder="Department" required>
+                                        <label for="department">Department</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-4">
+                                        <select class="form-select" id="year" name="year" required>
+                                            <option value="" selected disabled>Year of Study</option>
+                                            <option value="1">1st Year</option>
+                                            <option value="2">2nd Year</option>
+                                            <option value="3">3rd Year</option>
+                                            <option value="4">4th Year</option>
+                                            <option value="5">Completed</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-4">
+                                        <select class="form-select" id="duration" name="duration" required>
+                                            <option value="" selected disabled>Internship Duration</option>
+                                            <option value="1week">1 Week</option>
+                                            <option value="10days">10 Days</option>
+                                            <option value="15days">15 Days</option>
+                                            <option value="21days">21 Days</option>
+                                            <option value="1month">1 Month</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-4">
+                                        <input type="number" class="form-control" id="students" name="students" placeholder="Number of Students" min="1" required>
+                                        <label for="students">Number of Students</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" id="hostel" name="hostel">
+                                <label class="form-check-label" for="hostel">
+                                    Hostel Facility Needed
+                                </label>
+                            </div>
+
+                            <button type="submit" class="educate-btn w-100">
+                                <span class="educate-btn__curve"></span>
+                                Submit Application
+                            </button>
+                        </form>
+                        <div id="formMessage" class="alert mt-3" style="display: none;"></div>
+                    </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const form = document.getElementById('internshipApplicationForm');
+                            const messageDiv = document.getElementById('formMessage');
+
+                            form.addEventListener('submit', function(e) {
+                                e.preventDefault();
+                                
+                                // Show loading state
+                                const submitBtn = this.querySelector('button[type="submit"]');
+                                const originalBtnText = submitBtn.innerHTML;
+                                submitBtn.innerHTML = '<span class="educate-btn__curve"></span>Submitting...';
+                                submitBtn.disabled = true;
+                                
+                                // Get form data
+                                const formData = new FormData(this);
+                                
+                                // Send form data
+                                fetch('{% url "internship_inquiry" %}', {
+                                    method: 'POST',
+                                    body: formData,
+                                    headers: {
+                                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                                    }
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    messageDiv.style.display = 'block';
+                                    
+                                    if (data.status === 'success') {
+                                        messageDiv.className = 'alert alert-success mt-3';
+                                        form.reset();
+                                    } else {
+                                        messageDiv.className = 'alert alert-danger mt-3';
+                                    }
+                                    messageDiv.textContent = data.message;
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                    messageDiv.style.display = 'block';
+                                    messageDiv.className = 'alert alert-danger mt-3';
+                                    messageDiv.textContent = 'An error occurred. Please try again later.';
+                                })
+                                .finally(() => {
+                                    // Restore button state
+                                    submitBtn.innerHTML = originalBtnText;
+                                    submitBtn.disabled = false;
+                                    
+                                    // Hide message after 5 seconds
+                                    setTimeout(() => {
+                                        messageDiv.style.display = 'none';
+                                    }, 5000);
+                                });
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .application-form-section {
+                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            }
+
+            .application-form-wrapper {
+                background: white;
+                padding: 2.5rem;
+                border-radius: 20px;
+                box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            }
+
+            .application-form .form-control,
+            .application-form .form-select {
+                border: 2px solid #e9ecef;
+                border-radius: 12px;
+                padding: 0.75rem 1rem;
+                height: 3.5rem;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+            }
+
+            .application-form .form-control:focus,
+            .application-form .form-select:focus {
+                border-color: #22afdb;
+                box-shadow: 0 0 0 0.2rem rgba(34,175,219,0.15);
+            }
+
+            .application-form .form-floating > label {
+                padding: 0.75rem 1rem;
+                color: #6c757d;
+            }
+
+            .application-form .form-floating > .form-control:focus ~ label,
+            .application-form .form-floating > .form-select:focus ~ label {
+                color: #22afdb;
+            }
+
+            .application-form .form-check-input {
+                width: 1rem !important;
+                height: 1.25rem !important;
+                margin-top: 0.2rem;
+                border: 2px solid #e9ecef !important;
+                transition: all 0.2s ease;
+                cursor: pointer;
+                position: relative;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                background-color: #fff !important;
+            }
+
+            .application-form .form-check-input:checked {
+                background-color: #22afdb !important;
+                border-color: #22afdb !important;
+            }
+
+            .application-form .form-check-input:checked::before {
+                content: '';
+                position: absolute;
+                left: 6px;
+                top: 2px;
+                width: 5px;
+                height: 10px;
+                border: solid white;
+                border-width: 0 2px 2px 0;
+                transform: rotate(45deg);
+            }
+
+            .application-form .form-check-input:hover {
+                border-color: #22afdb !important;
+            }
+
+            .application-form .form-check-label {
+                padding-left: 0.5rem;
+                color: #2c3e50;
+                font-weight: 500;
+                cursor: pointer;
+            }
+
+            .application-form .educate-btn {
+                height: 3.5rem;
+                font-size: 1.1rem;
+                font-weight: 600;
+            }
+
+            @media (max-width: 768px) {
+                .application-form-wrapper {
+                    padding: 1.5rem;
+                }
+            }
+        </style>
+    </section>
+    <!-- Internship Application Form Section End -->
+
+    <!-- Benefits of Internship Training Start -->
+    <section class="course-features py-80">
+        <div class="container">
+            <div class="section-heading text-center mb-5" data-aos="fade-up">
+                <h6 class="color-primary mb-8">–––– Why Choose Our Internship</h6>
+                <h2>Benefits of <span class="fm-sec">Internship</span> Training</h2>
+                <p class="mt-3">Discover how our internship program can transform your career journey</p>
+            </div>
+
+            <div class="features-grid" data-aos="fade-up">
+                <!-- Practical Experience Card -->
+                <div class="feature-card primary">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <div class="icon-bg"></div>
+                            <i class="fas fa-laptop-code fa-2x"></i>
+                        </div>
+                        <div class="card-badge">
+                            <span>Essential</span>
+                            <div class="badge-shape"></div>
+                        </div>
+                        <h4>Gain Practical Experience</h4>
+                        <p>Apply your academic knowledge to real-world projects and gain hands-on experience in your field of study.</p>
+                        <div class="card-shapes">
+                            <div class="shape shape-1"></div>
+                            <div class="shape shape-2"></div>
+                            <div class="shape shape-3"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resume Enhancement Card -->
+                <div class="feature-card secondary">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <div class="icon-bg"></div>
+                            <i class="fas fa-file-alt fa-2x"></i>
+                        </div>
+                        <div class="card-badge">
+                            <span>Career Boost</span>
+                            <div class="badge-shape"></div>
+                        </div>
+                        <h4>Boost Your Resume</h4>
+                        <p>Stand out from other candidates with valuable industry experience and certified training credentials.</p>
+
+                        <div class="card-shapes">
+                            <div class="shape shape-1"></div>
+                            <div class="shape shape-2"></div>
+                            <div class="shape shape-3"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Networking Card -->
+                <div class="feature-card accent">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <div class="icon-bg"></div>
+                            <i class="fas fa-users fa-2x"></i>
+                        </div>
+                        <div class="card-badge">
+                            <span>Growth</span>
+                            <div class="badge-shape"></div>
+                        </div>
+                        <h4>Grow Your Professional Network</h4>
+                        <p>Connect with industry experts and mentors who can guide your career path and provide valuable insights.</p>
+
+                        <div class="card-shapes">
+                            <div class="shape shape-1"></div>
+                            <div class="shape shape-2"></div>
+                            <div class="shape shape-3"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Career Prospects Card -->
+                <div class="feature-card primary">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <div class="icon-bg"></div>
+                            <i class="fas fa-rocket fa-2x"></i>
+                        </div>
+                        <div class="card-badge">
+                            <span>Future Ready</span>
+                            <div class="badge-shape"></div>
+                        </div>
+                        <h4>Boost Your Career Prospects</h4>
+                        <p>Open doors to full-time employment opportunities and kickstart your career with industry recognition.</p>
+
+                        <div class="card-shapes">
+                            <div class="shape shape-1"></div>
+                            <div class="shape shape-2"></div>
+                            <div class="shape shape-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- Benefits of Internship Training End -->
+
+    <!-- Key Highlights Section Start -->
+    <section class="key-highlights py-40 ">
+        <div class="container">
+            <div class="section-heading text-center mb-5" data-aos="fade-up">
+                <h6 class="color-primary mb-8">–––– Program Highlights</h6>
+                <h2>Key Highlights of Our <span class="fm-sec">Internship Program</span></h2>
+            </div>
+            
+            <div class="highlights-wrapper">
+                <div class="highlights-grid">
+                    <!-- Practical Experience -->
+                    <div class="highlight-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-inner">
+                            <div class="icon-box">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <h3>Practical Experience</h3>
+                            <p>Gain hands-on experience by working on live projects relevant to your field.</p>
+                            <div class="card-overlay"></div>
+                        </div>
+                    </div>
+
+                    <!-- Mentorship -->
+                    <div class="highlight-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-inner">
+                            <div class="icon-box">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3>Mentorship from Professionals</h3>
+                            <p>Receive valuable insights and support from experienced industry mentors.</p>
+                            <div class="card-overlay"></div>
+                        </div>
+                    </div>
+
+                    <!-- Hands-On Learning -->
+                    <div class="highlight-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-inner">
+                            <div class="icon-box">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3>Hands-On Learning</h3>
+                            <p>Gain practical skills and knowledge that can be applied directly in the workplace.</p>
+                            <div class="card-overlay"></div>
+                        </div>
+                    </div>
+
+                    <!-- Flexible Schedules -->
+                    <div class="highlight-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="card-inner">
+                            <div class="icon-box">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3>Flexible Schedules</h3>
+                            <p>Choose internship durations and schedules that work for you.</p>
+                            <div class="card-overlay"></div>
+                        </div>
+                    </div>
+
+                    <!-- Certification -->
+                    <div class="highlight-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="card-inner">
+                            <div class="icon-box">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <h3>Certification</h3>
+                            <p>Get certified after successfully completing the internship program.</p>
+                            <div class="card-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="shape-1"></div>
+        <div class="shape-2"></div>
+    </section>
+    <!-- Key Highlights Section End -->
+
+    <!-- Why Choose Us Section Start -->
+    <section class="why-choose-us py-40">
+        <div class="container">
+            <div class="section-heading text-center mb-5" data-aos="fade-up">
+                <h6 class="color-primary mb-8">–––– Why Choose Us</h6>
+                <h2>Why Choose Us for <span class="fm-sec">Internship Training</span> in Coimbatore?</h2>
+            </div>
+
+            <div class="row g-4">
+                <!-- Left Column: Main Features -->
+                <div class="col-lg-8">
+                    <div class="features-wrapper">
+                        <div class="row g-4">
+                            <!-- Industry-Relevant Curriculum -->
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                                <div class="feature-box">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-book-reader"></i>
+                                    </div>
+                                    <h3>Industry-Relevant Curriculum</h3>
+                                    <p>Our programs are designed to teach you the skills that employers value.</p>
+                                    <ul class="feature-list">
+                                        <li><i class="fas fa-check-circle"></i>Updated with latest trends</li>
+                                        <li><i class="fas fa-check-circle"></i>Practical-oriented modules</li>
+                                        <li><i class="fas fa-check-circle"></i>Industry-standard tools</li>
+                                    </ul>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Experienced Trainers -->
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                                <div class="feature-box">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-chalkboard-teacher"></i>
+                                    </div>
+                                    <h3>Experienced Trainers</h3>
+                                    <p>Learn from experienced mentors who guide you through practical tasks.</p>
+                                    <ul class="feature-list">
+                                        <li><i class="fas fa-check-circle"></i>Industry experts as mentors</li>
+                                        <li><i class="fas fa-check-circle"></i>One-on-one guidance</li>
+                                        <li><i class="fas fa-check-circle"></i>Regular feedback sessions</li>
+                                    </ul>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Job-Ready Skills -->
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                                <div class="feature-box">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                    <h3>Job-Ready Skills</h3>
+                                    <p>Equip yourself with knowledge that makes you job-ready.</p>
+                                    <ul class="feature-list">
+                                        <li><i class="fas fa-check-circle"></i>Hands-on project experience</li>
+                                        <li><i class="fas fa-check-circle"></i>Real-world problem solving</li>
+                                        <li><i class="fas fa-check-circle"></i>Industry-specific training</li>
+                                    </ul>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Placement Assistance -->
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                                <div class="feature-box">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-briefcase"></i>
+                                    </div>
+                                    <h3>Placement Assistance</h3>
+                                    <p>Get support to secure positions after completing internship.</p>
+                                    <ul class="feature-list">
+                                        <li><i class="fas fa-check-circle"></i>Resume building support</li>
+                                        <li><i class="fas fa-check-circle"></i>Interview preparation</li>
+                                        <li><i class="fas fa-check-circle"></i>Job placement support</li>
+                                    </ul>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 88%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Stats & CTA -->
+                <div class="col-lg-4">
+                    <div class="stats-wrapper" data-aos="fade-left">
+                        <div class="stats-card">
+                            <div class="stats-header">
+                                <h3>Our Success Story</h3>
+                                <p>Numbers that speak for themselves</p>
+                            </div>
+                            
+                            <div class="stats-item">
+                                <div class="stats-icon">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+                                <div class="stats-info">
+                                    <span class="number">500+</span>
+                                    <span class="label">Students Trained</span>
+                                </div>
+                                <div class="stats-progress">
+                                    <div class="circle-progress" data-value="92"></div>
+                                </div>
+                            </div>
+
+                            <div class="stats-item">
+                                <div class="stats-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div class="stats-info">
+                                    <span class="number">90%</span>
+                                    <span class="label">Placement Rate</span>
+                                </div>
+                                <div class="stats-progress">
+                                    <div class="circle-progress" data-value="90"></div>
+                                </div>
+                            </div>
+
+                            <div class="stats-item">
+                                <div class="stats-icon">
+                                    <i class="fas fa-project-diagram"></i>
+                                </div>
+                                <div class="stats-info">
+                                    <span class="number">100+</span>
+                                    <span class="label">Live Projects</span>
+                                </div>
+                                <div class="stats-progress">
+                                    <div class="circle-progress" data-value="85"></div>
+                                </div>
+                            </div>
+                            <div class="stats-cta">
+                                <h4>Start Your Journey Today</h4>
+                                <p>Join our internship program and kickstart your career with hands-on experience.</p>
+                                <a href="#internship-application-form" class="educate-btn">
+                                    <span class="educate-btn__curve"></span>
+                                    Apply Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="shape-1"></div>
+        <div class="shape-2"></div>
+    </section>
+    <!-- Why Choose Us Section End -->
+
+    {% include 'courses/faq_section.html' %}
+
+
+    <style>
+        .faq{
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    .feature-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 16px;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        height: 100%;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .feature-card .icon {
+        width: 70px;
+        height: 70px;
+        background: rgba(34,175,219,0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+    }
+
+    .feature-card .icon i {
+        font-size: 1.75rem;
+        color: #22afdb;
+        transition: all 0.4s ease;
+    }
+
+    .feature-card h3 {
+        font-size: 1.25rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+    }
+
+    .feature-card p {
+        color: #6c757d;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+
+    .tech-item {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .tech-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .tech-item img {
+        height: 60px;
+        width: auto;
+        margin-bottom: 1rem;
+    }
+
+    .tech-item h4 {
+        color: #2c3e50;
+        margin: 0;
+        font-size: 1.1rem;
+    }
+
+    @media (max-width: 991px) {
+        .tech-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .tech-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .feature-card {
+            padding: 1.5rem;
+        }
+
+        .feature-card .icon {
+            width: 60px;
+            height: 60px;
+        }
+
+        .feature-card .icon i {
+            font-size: 1.5rem;
+        }
+    }
+
+    .hero-section {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(34,175,219,0.05) 0%, rgba(34,175,219,0) 100%);
+        z-index: -1;
+    }
+
+    .section-tag {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .tag-line {
+        width: 40px;
+        height: 2px;
+        background: #22afdb;
+        margin-right: 1rem;
+    }
+
+    .section-tag h6 {
+        color: #22afdb;
+        margin: 0;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .hero-content h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1.3;
+        color: #2c3e50;
+    }
+
+    .hero-content .highlight {
+        color: #22afdb;
+        position: relative;
+        display: inline-block;
+    }
+
+    .hero-content .highlight::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background: rgba(34,175,219,0.2);
+        z-index: -1;
+    }
+
+    .course-paths {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 2rem;
+    }
+
+    .path-tag {
+        background: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: 500;
+        color: #22afdb;
+        border: 1px solid rgba(34,175,219,0.2);
+        transition: all 0.3s ease;
+    }
+
+    .path-tag:hover {
+        background: #22afdb;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .cta-buttons {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .video-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: #2c3e50;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .video-btn i {
+        width: 40px;
+        height: 40px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #22afdb;
+        box-shadow: 0 4px 15px rgba(34,175,219,0.15);
+        transition: all 0.3s ease;
+    }
+
+    .video-btn:hover {
+        color: #22afdb;
+    }
+
+    .video-btn:hover i {
+        transform: scale(1.1);
+    }
+
+    .hero-image {
+        position: relative;
+        padding: 2rem;
+    }
+
+    .image-wrapper {
+        position: relative;
+    }
+
+    .main-image {
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .floating-card {
+        position: absolute;
+        background: white;
+        padding: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .floating-card i {
+        color: #22afdb;
+        font-size: 1.25rem;
+    }
+
+    .floating-card span {
+        font-weight: 500;
+        color: #2c3e50;
+    }
+
+    .card-1 {
+        top: 10%;
+        left: -10%;
+        animation-delay: 0.5s;
+    }
+
+    .card-2 {
+        bottom: 15%;
+        right: -5%;
+        animation-delay: 1s;
+    }
+
+    .experience-badge {
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #22afdb;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(34,175,219,0.3);
+    }
+
+    .experience-badge .number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: block;
+    }
+
+    .experience-badge .text {
+        font-size: 0.9rem;
+        opacity: 0.9;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    @media (max-width: 991px) {
+        .hero-content h2 {
+            font-size: 2rem;
+        }
+
+        .hero-image {
+            margin-top: 3rem;
+        }
+
+        .floating-card {
+            padding: 0.75rem;
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .hero-content h2 {
+            font-size: 1.75rem;
+        }
+
+        .course-paths {
+            gap: 0.5rem;
+        }
+
+        .path-tag {
+            padding: 0.4rem 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .cta-buttons {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .floating-card {
+            display: none;
+        }
+    }
+
+    .key-highlights {
+        position: relative;
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        overflow: hidden;
+    }
+
+    .shape-1, .shape-2 {
+        position: absolute;
+        background: rgba(34,175,219,0.05);
+        border-radius: 50%;
+        z-index: 0;
+    }
+
+    .shape-1 {
+        width: 300px;
+        height: 300px;
+        top: -100px;
+        left: -100px;
+    }
+
+    .shape-2 {
+        width: 500px;
+        height: 500px;
+        bottom: -200px;
+        right: -200px;
+    }
+
+    .highlights-wrapper {
+        position: relative;
+        z-index: 1;
+    }
+
+    .highlights-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .highlight-card {
+        position: relative;
+        height: 100%;
+    }
+
+    .card-inner {
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(34,175,219,0.1);
+    }
+
+    .highlight-card:hover .card-inner {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(34,175,219,0.1);
+    }
+
+    .icon-box {
+        width: 60px;
+        height: 60px;
+        background: rgba(34,175,219,0.1);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .icon-box i {
+        font-size: 1.5rem;
+        color: #22afdb;
+        transition: all 0.3s ease;
+    }
+
+    .highlight-card:hover .icon-box {
+        background: #22afdb;
+        transform: rotate(5deg);
+    }
+
+    .highlight-card:hover .icon-box i {
+        color: white;
+        transform: rotate(-5deg);
+    }
+
+    .card-inner h3 {
+        font-size: 1.25rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        position: relative;
+    }
+
+    .card-inner p {
+        color: #6c757d;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(34,175,219,0.1) 0%, rgba(255,255,255,0) 100%);
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .highlight-card:hover .card-overlay {
+        opacity: 1;
+    }
+
+    .highlights-stats {
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        margin-top: 4rem;
+        padding: 2rem;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-item .number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #22afdb;
+        display: block;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-item .label {
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 991px) {
+        .highlights-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .highlights-stats {
+            gap: 2rem;
+        }
+
+        .stat-item .number {
+            font-size: 2rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .highlights-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .highlights-stats {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .stat-item .number {
+            font-size: 1.75rem;
+        }
+    }
+
+    .why-choose-us {
+        position: relative;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        overflow: hidden;
+    }
+
+    .features-wrapper {
+        height: 100%;
+    }
+
+    .feature-box {
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        height: 100%;
+        position: relative;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(34,175,219,0.1);
+        overflow: hidden;
+    }
+
+    .feature-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(34,175,219,0.1);
+    }
+
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: rgba(34,175,219,0.1);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .feature-icon i {
+        font-size: 1.5rem;
+        color: #22afdb;
+        transition: all 0.3s ease;
+    }
+
+    .feature-box:hover .feature-icon {
+        background: #22afdb;
+    }
+
+    .feature-box:hover .feature-icon i {
+        color: white;
+    }
+
+    .feature-box h3 {
+        font-size: 1.25rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+    }
+
+    .feature-box p {
+        color: #6c757d;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .feature-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.5rem 0;
+    }
+
+    .feature-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: #6c757d;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .feature-list li i {
+        color: #22afdb;
+        font-size: 1rem;
+    }
+
+    .progress-bar {
+        height: 4px;
+        background: rgba(34,175,219,0.1);
+        border-radius: 2px;
+        overflow: hidden;
+    }
+
+    .progress-bar .progress {
+        height: 100%;
+        background: #22afdb;
+        border-radius: 2px;
+        transition: width 1.5s ease;
+    }
+
+    .stats-wrapper {
+        height: 100%;
+    }
+
+    .stats-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        height: 100%;
+        border: 1px solid rgba(34,175,219,0.1);
+        box-shadow: 0 10px 30px rgba(34,175,219,0.05);
+    }
+
+    .stats-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .stats-header h3 {
+        color: #2c3e50;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .stats-header p {
+        color: #6c757d;
+        margin: 0;
+    }
+
+    .stats-item {
+        display: flex;
+        align-items: center;
+        padding: 1.5rem;
+        border-radius: 15px;
+        background: rgba(34,175,219,0.03);
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .stats-item:hover {
+        background: rgba(34,175,219,0.08);
+        transform: translateX(5px);
+    }
+
+    .stats-icon {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        background: white;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        box-shadow: 0 4px 15px rgba(34,175,219,0.1);
+    }
+
+    .stats-icon i {
+        font-size: 1.25rem;
+        color: #22afdb;
+    }
+
+    .stats-info {
+        flex: 1;
+    }
+
+    .stats-info .number {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        line-height: 1;
+        margin-bottom: 0.25rem;
+    }
+
+    .stats-info .label {
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+
+    .stats-progress {
+        width: 60px;
+        height: 60px;
+        position: relative;
+    }
+
+    .circle-progress {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: conic-gradient(#22afdb var(--value), #e9ecef 0deg);
+        position: relative;
+    }
+
+    .circle-progress::before {
+        content: '';
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        background: white;
+        border-radius: 50%;
+    }
+
+    .cta-box {
+        text-align: center;
+        margin-top: 2rem;
+        padding: 2rem;
+        background: linear-gradient(135deg, #22afdb 0%, #1e9bc2 100%);
+        border-radius: 15px;
+        color: white;
+    }
+
+    .cta-box h4 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .cta-box p {
+        opacity: 0.9;
+        margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 991px) {
+        .stats-card {
+            margin-top: 2rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .feature-box {
+            padding: 1.5rem;
+        }
+
+        .stats-item {
+            padding: 1rem;
+        }
+
+        .stats-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .stats-info .number {
+            font-size: 1.25rem;
+        }
+
+        .stats-progress {
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    .internship-programs {
+        position: relative;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        overflow: hidden;
+    }
+
+    .programs-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .program-filters {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        margin-bottom: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .filter-group {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .filter-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #2c3e50;
+        font-weight: 500;
+    }
+
+    .duration-select {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid rgba(34,175,219,0.2);
+        border-radius: 8px;
+        color: #2c3e50;
+        background: white;
+        cursor: pointer;
+    }
+
+    .category-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .pill {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 20px;
+        background: rgba(34,175,219,0.1);
+        color: #22afdb;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .pill.active, .pill:hover {
+        background: #22afdb;
+        color: white;
+    }
+
+    .programs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .program-item {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(34,175,219,0.1);
+    }
+
+    .program-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .program-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+    }
+
+    .program-icon {
+        width: 45px;
+        height: 45px;
+        background: rgba(34,175,219,0.1);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .program-icon i {
+        font-size: 1.25rem;
+        color: #22afdb;
+        transition: all 0.3s ease;
+    }
+
+    .program-item:hover .program-icon {
+        background: #22afdb;
+    }
+
+    .program-item:hover .program-icon i {
+        color: white;
+    }
+
+    .program-badge {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        background: rgba(34,175,219,0.1);
+        color: #22afdb;
+    }
+
+    .program-badge.hot {
+        background: rgba(255,87,87,0.1);
+        color: #ff5757;
+    }
+
+    .program-badge.trending {
+        background: rgba(255,159,67,0.1);
+        color: #ff9f43;
+    }
+
+    .program-badge.new {
+        background: rgba(46,213,115,0.1);
+        color: #2ed573;
+    }
+
+    .program-item h3 {
+        font-size: 1.1rem;
+        color: #2c3e50;
+        margin-bottom: 0.75rem;
+    }
+
+    .program-meta {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        font-size: 0.85rem;
+        color: #6c757d;
+    }
+
+    .program-meta span {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+    }
+
+    .program-meta i {
+        color: #22afdb;
+    }
+
+    .program-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .program-tech span {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+        background: rgba(34,175,219,0.1);
+        color: #22afdb;
+        border-radius: 4px;
+    }
+
+    .program-footer {
+        border-top: 1px solid rgba(0,0,0,0.05);
+        padding-top: 1rem;
+        text-align: center;
+    }
+
+    .details-btn {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #22afdb;
+        border-radius: 6px;
+        background: transparent;
+        color: #22afdb;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .details-btn:hover {
+        background: #22afdb;
+        color: white;
+    }
+
+    .load-more-btn {
+        background: transparent;
+        border: none;
+        color: #22afdb;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0 auto;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .load-more-btn:hover {
+        background: rgba(34,175,219,0.1);
+    }
+
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+    }
+
+    .modal-content {
+        position: relative;
+        background: white;
+        width: 90%;
+        max-width: 600px;
+        margin: 50px auto;
+        border-radius: 12px;
+        padding: 2rem;
+    }
+
+    .close-modal {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #6c757d;
+    }
+
+    @media (max-width: 768px) {
+        .program-filters {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .filter-group {
+            width: 100%;
+        }
+
+        .programs-grid {
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        }
+    }
+
+    @media (max-width: 576px) {
+        .programs-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .program-item {
+            padding: 1.25rem;
+        }
+    }
+
+    .program-desc {
+        color: #6c757d;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .program-tech {
+        margin-top: auto;
+        padding-top: 1rem;
+    }
+
+    .program-meta {
+        margin-bottom: 0.75rem;
+    }
+
+    .program-meta span {
+        background: rgba(34,175,219,0.1);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+    }
+
+    .category-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .category-pills .pill {
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        background: rgba(34,175,219,0.1);
+        color: #22afdb;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        font-size: 0.9rem;
+    }
+
+    .category-pills .pill.active,
+    .category-pills .pill:hover {
+        background: #22afdb;
+        color: white;
+    }
+    </style>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Category filter functionality
+        const categoryPills = document.querySelectorAll('.category-pills .pill');
+        const programItems = document.querySelectorAll('.program-item');
+
+        categoryPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                // Update active state
+                categoryPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+
+                // Filter programs
+                const category = pill.dataset.category;
+                programItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('programDetailsModal');
+        const closeBtn = document.querySelector('.close-modal');
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    });
+
+    function showProgramDetails(programId) {
+        const modal = document.getElementById('programDetailsModal');
+        const modalBody = modal.querySelector('.modal-body');
+
+        modal.style.display = "block";
+    }
+    </script>
+
+    <style>
+        /* Breadcrumb Styles */
+        .breadcrumb-wrapper {
+            padding: 0.75rem 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .breadcrumb {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            margin-bottom: 0;
+            list-style: none;
+            background-color: transparent;
+        }
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
+
+        .breadcrumb-item a {
+            color: #5c9ce6;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: #2c234d;
+            text-decoration: underline;
+        }
+
+        .breadcrumb-item.active {
+            color: #2c234d;
+            font-weight: 500;
+        }
+
+        .breadcrumb-item + .breadcrumb-item {
+            padding-left: 0.5rem;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            display: inline-block;
+            padding-right: 0.5rem;
+            color: #6c757d;
+            content: "/";
+        }
+
+        @media (max-width: 576px) {
+            .breadcrumb-wrapper {
+                padding: 0.5rem 0;
+            }
+            
+            .breadcrumb-item {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+{% endblock %}

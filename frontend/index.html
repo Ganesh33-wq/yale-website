@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- COPILOT: Head copied from Django templates/base.html. Keep assets/links unchanged to preserve styling. -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="INDEX,FOLLOW" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="/static/vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/vendor/fontawesome/font-awesome.css" />
+    <link rel="stylesheet" href="/static/vendor/slickslider/slick.css" />
+    <link rel="stylesheet" href="/static/vendor/jquery-magnific-popup/jquery.magnific-popup.css" />
+    <link rel="stylesheet" href="/static/vendor/animate/animate.min.css" />
+    <link rel="stylesheet" href="/static/css/app.css" />
+    <link rel="stylesheet" href="/static/css/sidebar.css" />
+
+    <link rel="icon" type="image/x-icon" href="/static/media/favicon/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/media/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/media/favicon/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/media/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/static/media/favicon/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/static/media/favicon/android-chrome-512x512.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Ensure elements are visible but allow animations -->
+    <style>
+      /* Initial state for AOS elements - hidden before animation */
+      [data-aos] {
+        opacity: 0;
+        transition-property: opacity, transform;
+      }
+      /* Ensure AOS elements become visible when animated */
+      [data-aos].aos-animate {
+        opacity: 1 !important;
+      }
+      /* WOW initial state - hidden before animation */
+      .wow {
+        visibility: hidden;
+      }
+      /* WOW elements visible after animation */
+      .wow.animated {
+        visibility: visible !important;
+      }
+      /* Force course feature cards visible */
+      .course-feature-card,
+      .course-feature-content {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      /* Fix spacing between sections */
+      .team {
+        margin-top: 60px;
+        padding-top: 60px;
+      }
+      .course-features {
+        margin-bottom: 30px;
+      }
+      /* Ensure team slider has proper spacing */
+      .team-slider {
+        padding: 30px 0;
+      }
+      .team .col-xl-7 {
+        padding-left: 30px;
+      }
+      /* Floating icons animation visibility */
+      .floating-icons .floating-icon {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      /* Hero banner content visibility */
+      .hero-banner-1 .content {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+    </style>
+
+    <link rel="preload" as="image" href="/static/media/banners/hero-banner-1/hero-bg-1.webp" />
+    <meta name="google-site-verification" content="C1IW_xyB6fKSxFppxZ9-XCFsrEWywbwpjOGxOEieiXQ" />
+
+    <script>
+      // Matches tailwind config snippet from base.html; safe no-op if tailwind not loaded.
+      window.tailwind = window.tailwind || {};
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: { light: '#9dddf0', DEFAULT: '#7ccee9', dark: '#5ba9c4' },
+              secondary: { light: '#f0f7fa', DEFAULT: '#e1eef3', dark: '#c4d8df' },
+              accent: { light: '#ffd480', DEFAULT: '#ffb833', dark: '#e69500' }
+            }
+          }
+        }
+      };
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-T698Q38S');</script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body class="bg-white">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T698Q38S" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div id="root"></div>
+
+    <script src="/static/vendor/jquery/jquery-3.6.3.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/vendor/jquery-appear/jquery-appear.js"></script>
+    <script src="/static/vendor/jquery-validator/jquery-validator.js"></script>
+    <script src="/static/vendor/countdown/jquery.countdown.min.js"></script>
+    <script src="/static/vendor/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/static/vendor/slickslider/slick.min.js"></script>
+    <script src="/static/vendor/tilt/tilt.jquery.js"></script>
+    <script src="/static/vendor/wow/wow.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script type="module" src="/src/index.jsx"></script>
+  </body>
+</html>

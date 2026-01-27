@@ -1,42 +1,24 @@
 {
-  "name": "yale-frontend",
-  "version": "1.0.0",
+  "//": "COPILOT: Vite React app mirroring Django templates/routes. Copy Django static into frontend/public/static. TODO: replicate templates per README.",
+  "name": "frontend",
   "private": true,
-  "description": "Yale IT Training Institute - React Frontend",
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.0",
-    "react-scripts": "5.0.1",
-    "axios": "^1.6.0",
-    "react-helmet": "^6.1.0",
-    "react-toastify": "^9.1.3",
-    "aos": "^2.3.1",
-    "slick-carousel": "^1.8.1",
-    "react-slick": "^0.29.0"
-  },
+  "version": "0.0.1",
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.22.3"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.2.0"
   },
-  "proxy": "http://localhost:5000"
+  "engines": {
+    "node": ">=20"
+  }
 }

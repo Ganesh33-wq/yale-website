@@ -1,0 +1,1053 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ post.meta_title }} - Yale IT Academy{% endblock %}
+
+{% block meta %}
+<meta name="description" content="{{ post.meta_description }}">
+{% endblock %}
+
+{% block content %}
+<!-- Page Title Banner Start -->
+<section class="page_title_banner">
+    <div class="container">
+        <div class="content" style="padding: 190px 0 46px !important;">
+            <div class="title text-left">
+                <div class="banner-title-wrapper">
+                    <h1>{{ post.title }}</h1>
+                </div>
+                <img src="{% static 'media/shapes/tag-2.png' %}" alt="" class="tag">
+            </div>
+            <div class="educate-tilt"
+                data-tilt-options='{ "glare": false, "maxGlare": 0, "maxTilt": 2, "speed": 700, "scale": 1 }'>
+                <img src="{% static 'media/resources/page_title.webp' %}" alt="" class="banner-title-img">
+            </div>
+            <img src="{% static 'media/shapes/circle-lines-2.png' %}" alt="" class="circle_vector">
+        </div>
+    </div>
+    
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-wrapper">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'blog_list' %}">Blog</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ post.title|truncatechars:40 }}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<!-- Page Title Banner End -->
+
+<!-- Blog Detail Area Start -->
+<section class="py-60">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="blog-sidebar" id="blogSidebar">
+                    <div class="blog-sidebar-content">
+                        <!-- Advertisement Section -->
+                        <div class="sidebar-widget advertisement-widget">
+                            {% for ad in advertisements %}
+                            <div class="ad-item mb-4">
+                                <a href="{{ ad.url }}" target="_blank">
+                                    <img src="{{ ad.image.url }}" alt="{{ ad.title }}" class="img-fluid br-20">
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                        <!-- Contact Form Widget -->
+                        <div class="contact-form-widget">
+                            <h4 class="widget-title">Get in Touch </h4>
+                            <form id="sidebarContactForm" class="contact-form" method="post" action="{% url 'contact' %}">
+                                 
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <textarea class="form-control" name="message" rows="4" placeholder="Your Message" required></textarea>
+                                </div>
+                                <button type="submit" class="educate-btn w-100">
+                                    <span class="educate-btn__curve"></span>Send Message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-8">
+                <div class="blog_detail_content">
+                    <!-- Featured Image -->
+                    <div class="featured_image mb-32">
+                        <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="img-fluid br-20">
+                    </div>
+
+                    <!-- Post Title and Meta -->
+                    <div class="post_header mb-32">
+                        <h2 class="post_title mb-16">{{ post.title }}</h2>
+                        <div class="post_meta">
+                            <span class="author">
+                                <i class="far fa-user me-2"></i>
+                                {% if post.author %}
+                                    {% if post.author.get_full_name %}
+                                        {{ post.author.get_full_name }}
+                                    {% else %}
+                                        {{ post.author.username }}
+                                    {% endif %}
+                                {% else %}
+                                    Administrator
+                                {% endif %}
+                            </span>
+                            <span class="date ms-4">
+                                <i class="far fa-calendar me-2"></i>
+                                {{ post.created_at|date:"d F Y" }}
+                            </span>
+                            <span class="category ms-4">
+                                <i class="far fa-folder me-2"></i>
+                                {{ post.category.name }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Debug Info -->
+                    {% if post.toc_type != 'none' %}
+                        <div class="debug-info" style="display: none;">
+                            <p>TOC Type: {{ post.toc_type }}</p>
+                            <p>TOC Data: {{ post.table_of_contents|json_script:"toc-data" }}</p>
+                        </div>
+                    {% endif %}
+
+                    {% if post.table_of_contents %}
+                    <!-- Table of Contents -->
+                    <div class="table_of_contents mb-32">
+                        <div class="toc_header">
+                            <h4 class="mb-24">Table of contents</h4>
+                        </div>
+                        <div class="toc_content">
+                            <div class="toc_scroll">
+                                <ul class="toc_list">
+                                    {% for item in post.table_of_contents %}
+                                    <li class="toc_item level-{{ item.level }}">
+                                        <a href="#{{ item.id }}" class="toc_link">
+                                            <span class="toc_number">{{ forloop.counter }}.</span>
+                                            {{ item.text }}
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Author Info -->
+                    <div class="author_info_card mb-32">
+                        <div class="author_avatar">
+                            {% if post.author %}
+                                {% if post.author.profile and post.author.profile.avatar %}
+                                    <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author.get_full_name }}">
+                                {% else %}
+                                    <img src="{% static 'media/users/default-avatar.svg' %}" alt="Admin">
+                                {% endif %}
+                            {% else %}
+                                <img src="{% static 'media/users/default-avatar.svg' %}" alt="Admin">
+                            {% endif %}
+                        </div>
+                        <div class="author_details">
+                            <h6>
+                                {% if post.author %}
+                                    {% if post.author.get_full_name %}
+                                        {{ post.author.get_full_name }}
+                                    {% else %}
+                                        {{ post.author.username }}
+                                    {% endif %}
+                                {% else %}
+                                    Administrator
+                                {% endif %}
+                            </h6>
+                            <p class="mb-8">
+                                {% if post.author.profile and post.author.profile.title %}
+                                    {{ post.author.profile.title }}
+                                {% else %}
+                                    Site Administrator
+                                {% endif %}
+                            </p>
+                            <div class="social_links">
+                                {% if post.author and post.author.profile %}
+                                    {% if post.author.profile.linkedin_url %}
+                                        <a href="{{ post.author.profile.linkedin_url }}" class="social_link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                    {% endif %}
+                                    {% if post.author.profile.twitter_url %}
+                                        <a href="{{ post.author.profile.twitter_url }}" class="social_link" target="_blank"><i class="fab fa-twitter"></i></a>
+                                    {% endif %}
+                                    {% if post.author.profile.github_url %}
+                                        <a href="{{ post.author.profile.github_url }}" class="social_link" target="_blank"><i class="fab fa-github"></i></a>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post Summary -->
+                    <div class="post_summary mb-32">
+                        <p class="lead">{{ post.summary }}</p>
+                    </div>
+
+                    <!-- Post Content -->
+                    <div class="post_content mb-32">
+                        {{ post.content|safe }}
+                    </div>
+
+                    <!-- Share Section -->
+                    <div class="share_section">
+                        <h6 class="mb-16">Share this article:</h6>
+                        <div class="share_buttons d-flex flex-wrap">
+                            <a href="https://api.whatsapp.com/send?text={{ request.build_absolute_uri }}" target="_blank" class="share_btn whatsapp bg-whatsapp text-white" style="background-color: #25D366;">
+                                <i class="fab fa-whatsapp"></i> Whatsapp
+                            </a>
+                            <a href="https://www.instagram.com/?url={{ request.build_absolute_uri }}" target="_blank" class="share_btn instagram bg-instagram text-white" style="background-color: #E1306C;">
+                                <i class="fab fa-instagram"></i> Instagram
+                            </a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="share_btn facebook bg-facebook text-white">
+                                <i class="fab fa-facebook-f"></i> Facebook
+                            </a>
+                            <a href="https://www.youtube.com/redirect?q=https://{{ request.get_host }}{{ request.path }}" target="_blank" class="share_btn youtube bg-white text-black" >
+                                <i class="fab fa-youtube"></i> YouTube
+                            </a>
+                            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ post.title }}" target="_blank" class="share_btn linkedin bg-linkedin text-white">
+                                <i class="fab fa-linkedin-in"></i> LinkedIn
+                            </a>
+                            <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ post.title }}" target="_blank" class="share_btn twitter bg-twitter text-white" style="background-color: #1DA1F2;">
+                                <i class="fab fa-twitter"></i> Twitter
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Detail Area End -->
+
+<!-- Related Posts Section -->
+<section class="py-60 bg-light">
+    <div class="container">
+        <div class="section-title mb-48">
+            <div class="heading">
+                <h6 class="color-primary mb-8">–––– Related Articles</h6>
+                <h2>You Might Also Like</h2>
+            </div>
+        </div>
+        <div class="row g-4">
+            {% for related_post in related_posts %}
+            <div class="col-lg-4 col-md-6">
+                <div class="blog_card hover-up">
+                    <div class="blog_card_img_block">
+                        <img src="{{ related_post.featured_image.url }}" alt="{{ related_post.title }}">
+                        <div class="blog-meta">
+                            <span class="date">{{ related_post.created_at|date:"d M Y" }}</span>
+                            <span class="category">{{ related_post.category.name }}</span>
+                        </div>
+                    </div>
+                    <div class="blog_card_text_block">
+                        <h3 class="mb-16">
+                            <a class="blog_title" href="{% url 'blog_detail' related_post.slug %}">{{ related_post.title }}</a>
+                        </h3>
+                        <p class="mb-24">{{ related_post.summary|truncatechars:100 }}</p>
+                        <div class="blog_card_footer">
+                            <div class="author">
+                                {% if related_post.author %}
+                                    {% if related_post.author.profile and related_post.author.profile.avatar %}
+                                        <img src="{{ related_post.author.profile.avatar.url }}" alt="{{ related_post.author.get_full_name }}">
+                                    {% else %}
+                                        <img src="{% static 'media/users/default-avatar.svg' %}" alt="Admin">
+                                    {% endif %}
+                                    <div class="author_info">
+                                        <h6 class="dark-gray mb-4p">
+                                            {% if related_post.author.get_full_name %}
+                                                {{ related_post.author.get_full_name }}
+                                            {% else %}
+                                                {{ related_post.author.username }}
+                                            {% endif %}
+                                        </h6>
+                                        <p class="small">
+                                            {% if related_post.author.profile and related_post.author.profile.title %}
+                                                {{ related_post.author.profile.title }}
+                                            {% else %}
+                                                Admin
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                {% else %}
+                                    <img src="{% static 'media/users/default-avatar.svg' %}" alt="Admin">
+                                    <div class="author_info">
+                                        <h6 class="dark-gray mb-4p">Admin</h6>
+                                        <p class="small">Administrator</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <a href="{% url 'blog_detail' related_post.slug %}" class="h6 color-primary educate_link_btn">
+                                Read More<i class="far fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<style>
+/* Blog Detail Styles */
+
+
+.blog-meta {
+    display: flex;
+    gap: 24px;
+    justify-content: left;
+}
+
+.blog-meta span {
+    color: #7a8582;
+    font-size: 14px;
+}
+
+.blog-meta span i {
+    color: #0aa6d7;
+    margin-right: 8px;
+}
+
+.blog_detail_content {
+    background: #fff;
+    padding: 32px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.featured_image {
+    margin: -32px -32px 32px -32px;
+}
+
+.featured_image img {
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+}
+
+.author_info_card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+    background: #f8f9fa;
+    border-radius: 15px;
+}
+
+.author_avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.social_links {
+    display: flex;
+    gap: 12px;
+}
+
+.social_link {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 50%;
+    color: #0aa6d7;
+    transition: all 0.3s ease;
+}
+
+.social_link:hover {
+    background: #0aa6d7;
+    color: #fff;
+}
+
+.post_content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #2a322d;
+}
+
+.post_content h2, 
+.post_content h3 {
+    margin: 32px 0 16px;
+}
+
+.post_content p {
+    margin-bottom: 16px;
+}
+
+.post_content img {
+    border-radius: 15px;
+    margin: 24px 0;
+}
+
+.post_tags .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    padding: 6px 16px;
+    border-radius: 20px;
+    color: #2a322d;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    background: #0aa6d7;
+    color: #fff;
+}
+
+.share_buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.share_btn {
+    padding: 8px 20px;
+    border-radius: 25px;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.share_btn i {
+    font-size: 14px;
+}
+
+.share_btn.twitter {
+    background: #1DA1F2;
+}
+
+.share_btn.facebook {
+    background: #4267B2;
+}
+
+.share_btn.linkedin {
+    background: #0077B5;
+}
+
+.share_btn:hover {
+    opacity: 0.9;
+    color: #fff;
+    transform: translateY(-2px);
+}
+.share_btn.youtube {
+    background:  #FF0000 !important;
+}
+
+
+/* Remove sidebar-related styles */
+
+@media (max-width: 768px) {
+    .blog_detail_content {
+        padding: 20px;
+    }
+
+    .featured_image {
+        margin: -20px -20px 20px -20px;
+    }
+
+    .author_info_card {
+        padding: 15px;
+    }
+
+    .share_buttons {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .share_btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Sidebar Styles */
+.blog-sidebar {
+    height: auto;
+    width: 100%;
+}
+
+.blog-sidebar-content {
+    position: sticky !important;
+    top: 100px; /* Default, will be updated by JS */
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+@media (max-width: 991px) {
+    .blog-sidebar-content {
+        position: static !important;
+        top: 0;
+    }
+}
+
+.sidebar-widget {
+    background: #fff;
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 24px;
+}
+
+.widget-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+    position: relative;
+}
+
+.widget-title:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #0aa6d7;
+}
+
+.advertisement-widget {
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.ad-item img {
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.ad-item:hover img {
+    transform: translateY(-5px);
+}
+
+.contact-form-widget {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.contact-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.contact-form .form-group:nth-last-child(2) {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form textarea {
+    flex-grow: 1;
+    min-height: 100px;
+    height: 100%;
+}
+
+/* Ensure parent containers don't interfere with sticky positioning */
+.blog-sidebar {
+    overflow: visible !important;
+    height: 100% !important;
+}
+
+@media (max-width: 991px) {
+    .blog-sidebar {
+        margin-top: 40px;
+        position: static;
+    }
+}
+
+/* Updated Table of Contents Styles */
+.table_of_contents {
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border: 1px solid #eef0f2;
+    margin-bottom: 40px;
+}
+
+.toc_header h4 {
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eef0f2;
+}
+
+.toc_content {
+    margin-top: 20px;
+}
+
+.toc_scroll {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 16px;
+}
+
+.toc_scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.toc_scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.toc_scroll::-webkit-scrollbar-thumb {
+    background: #0aa6d7;
+    border-radius: 3px;
+}
+
+.toc_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc_item {
+    margin: 12px 0;
+}
+
+.toc_item.level-2 {
+    margin-left: 0;
+}
+
+.toc_item.level-3 {
+    margin-left: 24px;
+}
+
+.toc_item.level-4 {
+    margin-left: 48px;
+}
+
+.toc_link {
+    color: #4a5568;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.5;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+
+.toc_number {
+    color: #0aa6d7;
+    margin-right: 8px;
+    font-weight: 500;
+}
+
+.toc_link:hover {
+    color: #0aa6d7;
+    background: rgba(10, 166, 215, 0.05);
+    transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+    .table_of_contents {
+        padding: 24px;
+    }
+
+    .toc_header h4 {
+        font-size: 1.25rem;
+    }
+    
+    .toc_item.level-3 {
+        margin-left: 16px;
+    }
+    
+    .toc_item.level-4 {
+        margin-left: 32px;
+    }
+
+    .toc_link {
+        font-size: 0.95rem;
+    }
+}
+
+/* Add styles for active TOC item */
+.toc_link.active {
+    color: #0aa6d7;
+    background: rgba(10, 166, 215, 0.05);
+    font-weight: 500;
+}
+
+/* Banner Title Styles */
+.page_title_banner {
+    position: relative;
+    overflow: hidden;
+}
+
+.page_title_banner .content {
+    position: relative;
+    z-index: 2;
+}
+
+.banner-title-wrapper {
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+.page_title_banner h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    color: #2c3e50;
+    font-weight: 700;
+    margin: 0;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.page_title_banner .blog-meta {
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.page_title_banner .blog-meta span {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    font-size: 0.9rem;
+}
+
+.page_title_banner .tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-width: 150px;
+    opacity: 0.5;
+}
+
+.page_title_banner .circle_vector {
+    position: absolute;
+    bottom: -50px;
+    left: -50px;
+    opacity: 0.1;
+    max-width: 200px;
+}
+
+@media (max-width: 991px) {
+    .page_title_banner h1 {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+    }
+    
+    .banner-title-wrapper {
+        max-width: 100%;
+    }
+
+    .page_title_banner .content {
+        padding: 120px 0 40px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .page_title_banner .blog-meta {
+        gap: 10px;
+    }
+
+    .page_title_banner .blog-meta span {
+        font-size: 0.8rem;
+        padding: 4px 10px;
+    }
+    
+    .page_title_banner .tag,
+    .page_title_banner .circle_vector {
+        display: none;
+    }
+}
+
+/* Breadcrumb Styles */
+.breadcrumb-wrapper {
+    padding: 0.75rem 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-bottom: 0;
+    list-style: none;
+    background-color: transparent;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.breadcrumb-item a {
+    color: #5c9ce6;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: #2c234d;
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: #2c234d;
+    font-weight: 500;
+}
+
+.breadcrumb-item + .breadcrumb-item {
+    padding-left: 0.5rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    display: inline-block;
+    padding-right: 0.5rem;
+    color: #6c757d;
+    content: "/";
+}
+
+@media (max-width: 576px) {
+    .breadcrumb-wrapper {
+        padding: 0.5rem 0;
+    }
+    
+    .breadcrumb-item {
+        font-size: 0.75rem;
+    }
+}
+
+/* Sticky Contact Form Styles */
+
+.sticky-widget {
+    position: sticky;
+    top: 100px;
+    z-index: 100;
+}
+
+.contact-form-widget {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+.blog-sidebar {
+    overflow: visible !important;
+}
+
+.blog-sidebar-content {
+    overflow: visible !important;
+}
+
+@media (max-width: 991px) {
+    .sticky-widget {
+        position: relative;
+        top: 0;
+    }
+}
+</style>
+
+<script>
+document.getElementById('sidebarContactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    
+    fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert(data.message);
+            this.reset();
+        } else {
+            alert('Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+    });
+});
+
+// Smooth scroll for table of contents links
+document.querySelectorAll('.toc_link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            const offset = 100; // Adjust this value based on your header height
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+            
+            // Highlight the target heading temporarily
+            targetElement.classList.add('highlight');
+            setTimeout(() => {
+                targetElement.classList.remove('highlight');
+            }, 2000);
+        }
+    });
+});
+
+// Add active state to TOC items while scrolling
+document.addEventListener('DOMContentLoaded', function() {
+    const tocLinks = document.querySelectorAll('.toc_link');
+    const headings = document.querySelectorAll('h2, h3, h4');
+    
+    if (tocLinks.length && headings.length) {
+        window.addEventListener('scroll', function() {
+            let current = '';
+            
+            headings.forEach(heading => {
+                const sectionTop = heading.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
+                    current = heading.getAttribute('id');
+                }
+            });
+            
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    }
+});
+
+// Add debug logging for TOC
+document.addEventListener('DOMContentLoaded', function() {
+    const tocData = document.getElementById('toc-data');
+    if (tocData) {
+        console.log('TOC Data:', JSON.parse(tocData.textContent));
+    }
+    
+    const headings = document.querySelectorAll('h2, h3, h4');
+    console.log('Found headings:', headings.length);
+    headings.forEach(h => console.log('Heading:', h.textContent, 'ID:', h.id));
+});
+
+// Enhanced sticky sidebar behavior that stops when content ends
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the main navigation element which is the header
+    const header = document.querySelector('header .main-menu');
+    const sidebar = document.getElementById('blogSidebar');
+    const sidebarContent = sidebar?.querySelector('.blog-sidebar-content');
+    const mainSection = document.querySelector('.py-60'); // The main section containing the sidebar
+    
+    // Exit if required elements aren't found
+    if (!sidebar || !sidebarContent || !mainSection) {
+        console.log('Required elements not found for sticky sidebar');
+        return;
+    }
+    
+    // Get header height (default to 80px if header not found)
+    const headerHeight = header ? header.offsetHeight : 80;
+    console.log('Header height:', headerHeight);
+    
+    // Set the initial top position
+    sidebarContent.style.top = `${headerHeight + 20}px`;
+    
+    // Function to handle sticky behavior
+    function handleSticky() {
+        // Only apply on desktop
+        if (window.innerWidth <= 991) return;
+        
+        const scrollY = window.scrollY;
+        const mainSectionBottom = mainSection.getBoundingClientRect().bottom + scrollY;
+        const sidebarHeight = sidebarContent.offsetHeight;
+        const viewportHeight = window.innerHeight;
+        const sidebarBottom = scrollY + headerHeight + 20 + sidebarHeight;
+        
+        // If sidebar would extend beyond the main section
+        if (sidebarBottom >= mainSectionBottom) {
+            // Calculate how far from the top the sidebar should be positioned
+            const topPosition = mainSectionBottom - sidebarHeight;
+            sidebarContent.style.position = 'absolute';
+            sidebarContent.style.top = `${topPosition - scrollY}px`;
+        } else {
+            // Normal sticky behavior
+            sidebarContent.style.position = 'sticky';
+            sidebarContent.style.top = `${headerHeight + 20}px`;
+        }
+    }
+    
+    // Initial call
+    handleSticky();
+    
+    // Add event listeners
+    window.addEventListener('scroll', handleSticky);
+    window.addEventListener('resize', handleSticky);
+    
+    // Debug info
+    console.log('Sticky sidebar initialized');
+});
+</script>
+
+{% endblock %}

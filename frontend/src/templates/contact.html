@@ -1,0 +1,361 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Page Title Banner Start -->
+<section class="page_title_banner">
+    <div class="container">
+        <div class="content">
+            <div class="title">
+                <h1>Contact Us</h1>
+                <img src="{% static 'media/shapes/tag-2.png' %}" alt="" class="tag">
+            </div>
+            <div class="educate-tilt" data-tilt-options='{ "glare": false, "maxGlare": 0, "maxTilt": 2, "speed": 700, "scale": 1 }'>
+                <img src="{% static 'media/resources/page_title.webp' %}" alt="" class="banner-title-img">
+            </div>
+            <img src="{% static 'media/shapes/circle-lines-2.png' %}" alt="" class="circle_vector">
+        </div>
+    </div>
+    
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-wrapper">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<!-- Page Title Banner End -->
+
+<!-- Contact Section Start -->
+<section class="contact_section py-60">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Information -->
+            <div class="col-lg-5 mb-4 mb-lg-0">
+                <div class="contact_info">
+                    <h2 class="mb-24">Get in Touch</h2>
+                    <p class="mb-32">Have questions about our courses or services? We're here to help! Reach out to us through any of the following channels:</p>
+                    
+                    <div class="contact_links">
+                        <!-- Address -->
+                        <a target="_blank" href="https://maps.app.goo.gl/XDS6ApM7yEjM4P3cA" class="contact_link_block mb-24">
+                            <div class="icon mt-2">
+                                <i class="fal fa-map-marker-alt"></i>
+                            </div>
+                            <span>1st Floor, 215, Bharathiyar Rd, Siddhapudur, New Siddhapudur, Coimbatore, Tamil Nadu 641044</span>
+                        </a>
+                        
+                        <!-- Email -->
+                        <div class="contact_link_block mb-24">
+                            <div class="icon">
+                                <i class="fal fa-envelope"></i>
+                            </div>
+                            <span><a href="mailto:admin@yaleinfotech.com">admin@yaleinfotech.com</a></span>
+                        </div>
+                        
+                        <!-- Phone -->
+                        <div class="contact_link_block">
+                            <div class="icon">
+                                <i class="fal fa-phone"></i>
+                            </div>
+                            <span><a href="tel:+916383277904">+91 6383277904</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-7">
+                <div class="contact_form_block">
+                    <h3 class="mb-24">Send us a Message</h3>
+                    <form class="contact-form form-validator" method="post" action="{% url 'contact' %}">
+                         
+                        <div class="row">
+                            <div class="col-md-6 mb-24">
+                                <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6 mb-24">
+                                <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="col-12 mb-24">
+                                <select class="form-control" name="course_interest" required>
+                                    <option value="">Select Course of Interest</option>
+                                    <option value="Python Training">Python Training</option>
+                                    <option value="Java Training">Java Training</option>
+                                    <option value="Full Stack Training">Full Stack Training</option>
+                                    <option value="Digital Marketing Training">Digital Marketing Training</option>
+                                    <option value="UI UX Training">UI/UX Design Training</option>
+                                    <option value="AI Training">AI Training</option>
+                                    <option value="Data Science Training">Data Science Training</option>
+                                    <option value="Cyber Security Training">Cyber Security Training</option>
+                                    <option value="Internship Training">Internship Training</option>
+                                    <option value="Final Year Project">Final Year Project</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-12 mb-24">
+                                <input type="text" class="form-control" name="subject" placeholder="Subject">
+                            </div>
+                            <div class="col-12 mb-24">
+                                <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="educate-btn">
+                                    Send Message
+                                    <span class="educate-btn__curve"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="message" class="alert-message mt-3" style="display: none;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact Section End -->
+
+<!-- Map Section Start -->
+<section class="map_section pb-60">
+    <div class="container">
+        <div class="map_wrapper">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.2954237517756!2d76.9734007!3d11.0164472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba859ad85081719%3A0x4e4e7e6546756091!2sYale%20It%20Skill%20Hub%20-%20Full%20Stack%20Developer%2C%20Java%20Course%2C%20Python%20Course%2C%20Software%20Testing%20Course%20in%20Coimbatore!5e0!3m2!1sen!2sin!4v1738824608061!5m2!1sen!2sin"
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+</section>
+<!-- Map Section End -->
+
+<style>
+.contact_section {
+    background-color: #f8f9fa;
+}
+
+.contact_info {
+    padding: 2rem;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    height: 100%;
+}
+
+.contact_link_block {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.contact_link_block .icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(124, 206, 233, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact_link_block .icon i {
+    color: #7ccee9;
+    font-size: 18px;
+}
+
+.contact_link_block span {
+    color: #6c757d;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.contact_link_block a {
+    color: #6c757d;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact_link_block a:hover {
+    color: #7ccee9;
+}
+
+.contact_form_block {
+    padding: 2rem;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.map_wrapper {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 991px) {
+    .contact_info, .contact_form_block {
+        margin-bottom: 2rem;
+    }
+}
+.page_title_banner .content{
+    padding: 170px 0 !important;   
+}
+/* Course Dropdown Styles */
+select.form-control {
+    height: 50px;
+    padding: 10px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #6c757d;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+    padding-right: 40px;
+}
+
+select.form-control:focus {
+    border-color: #5c9ce6;
+    box-shadow: 0 0 0 0.2rem rgba(92, 156, 230, 0.25);
+}
+
+select.form-control option {
+    padding: 10px;
+}
+
+/* Breadcrumb Styles */
+.breadcrumb-wrapper {
+    padding: 0.75rem 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-bottom: 0;
+    list-style: none;
+    background-color: transparent;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.breadcrumb-item a {
+    color: #5c9ce6;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: #2c234d;
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: #2c234d;
+    font-weight: 500;
+}
+
+.breadcrumb-item + .breadcrumb-item {
+    padding-left: 0.5rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    display: inline-block;
+    padding-right: 0.5rem;
+    color: #6c757d;
+    content: "/";
+}
+
+@media (max-width: 576px) {
+    .breadcrumb-wrapper {
+        padding: 0.5rem 0;
+    }
+    
+    .breadcrumb-item {
+        font-size: 0.75rem;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.querySelector('.contact-form');
+    const messageDiv = document.getElementById('message');
+
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Sending...';
+        submitBtn.disabled = true;
+        
+        // Get form data
+        const formData = new FormData(contactForm);
+        
+        // Send form data
+        fetch('{% url "contact" %}', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            messageDiv.style.display = 'block';
+            if (data.status === 'success') {
+                messageDiv.className = 'alert-message alert alert-success';
+                contactForm.reset();
+            } else {
+                messageDiv.className = 'alert-message alert alert-danger';
+            }
+            messageDiv.textContent = data.message;
+        })
+        .catch(error => {
+            messageDiv.style.display = 'block';
+            messageDiv.className = 'alert-message alert alert-danger';
+            messageDiv.textContent = 'An error occurred. Please try again later.';
+        })
+        .finally(() => {
+            // Restore button state
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        });
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,646 @@
+{% load static %}
+
+<section class="page_title_banner">
+    <div class="banner-shapes">
+        <div class="shape-1"></div>
+        <div class="shape-2"></div>
+        <div class="shape-3"></div>
+    </div>
+    <div class="container banner-container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="banner-content">
+                    <div class="title-wrapper">
+                        <span class="subtitle">Welcome to Yale IT</span>
+                        <h1 class="banner-title">{{ course_title }}</h1>
+                        <p class="banner-description">Transform your career with our industry-leading training program. Join thousands of successful graduates.</p>
+                        <div class="banner-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Expert Trainers</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Placement Assistance</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Hands-on Projects</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="course-inquiry-form" id="course-form">
+                    <div class="form-wrapper">
+                        <div class="form-header">
+                            <div class="header-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3 class="inquiry-title">Enquire Now</h3>
+                            <p class="form-subtitle">Get a Free Demo Class</p>
+                        </div>
+
+                        <form id="courseInquiryForm" class="course-form">
+                             
+                            <input type="hidden" name="course" value="{{ course_name }}">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-icon">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                    <input type="text" class="form-control custom-input" name="name" placeholder="Your Name" required style="padding-left: 40px;">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                    <input type="email" class="form-control custom-input" name="email" placeholder="Email Address" required style="padding-left: 40px;">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-icon">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </span>
+                                    <input type="tel" class="form-control custom-input" name="phone" placeholder="Phone Number" required pattern="[0-9]{10}" style="padding-left: 40px;">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="submit-btn">
+                                    <span class="btn-text">Submit Inquiry</span>
+                                    <div class="btn-loader d-none">
+                                        <div class="spinner-border spinner-border-sm" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <div class="form-message" style="display: none;">
+                                <div class="alert" role="alert"></div>
+                            </div>
+
+                            <div class="trust-badges">
+                                <div class="badge-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>100% Secure</span>
+                                </div>
+                                <div class="badge-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>24/7 Support</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-wrapper">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    {% if course_type == 'course' %}
+                        <li class="breadcrumb-item">Courses</li>
+                    {% elif course_type == 'service' %}
+                        <li class="breadcrumb-item">Services</li>
+                    {% elif course_type == 'internship' %}
+                        <li class="breadcrumb-item"><a href="{% url 'internship_training' %}">Internships</a></li>
+                    {% else %}
+                        <!-- Default case if course_type is not specified -->
+                        <li class="breadcrumb-item">Courses</li>
+                    {% endif %}
+                    <li class="breadcrumb-item active" aria-current="page">{{ course_name }}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<style>
+.page_title_banner {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: clamp(3rem, 5vh, 5rem) 0;
+    padding-top: 50px;
+}
+
+.banner-container {
+    padding-top: 5rem;
+    padding-bottom: 1.5rem;
+}
+
+.banner-shapes .shape-1,
+.banner-shapes .shape-2,
+.banner-shapes .shape-3 {
+    position: absolute;
+    z-index: 0;
+    border-radius: 50%;
+    opacity: 0.1;
+}
+
+.banner-shapes .shape-1 {
+    width: clamp(200px, 30vw, 300px);
+    height: clamp(200px, 30vw, 300px);
+    background: #7ccee9;
+    top: -100px;
+    left: -100px;
+}
+
+.banner-shapes .shape-2 {
+    width: clamp(150px, 25vw, 200px);
+    height: clamp(150px, 25vw, 200px);
+    background: #5c9ce6;
+    bottom: -50px;
+    right: -50px;
+}
+
+.banner-shapes .shape-3 {
+    width: clamp(100px, 20vw, 150px);
+    height: clamp(100px, 20vw, 150px);
+    background: #7ccee9;
+    bottom: 50px;
+    left: 50%;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 1;
+    padding-right: clamp(1rem, 3vw, 2rem);
+    max-width: 600px; /* Limit content width */
+}
+
+.subtitle {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(124, 206, 233, 0.1);
+    color: #7ccee9;
+    border-radius: 30px;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.banner-title {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: #2c234d;
+    line-height: 1.2;
+    margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+.banner-description {
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    color: #6c757d;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+    max-width: 90%;
+}
+
+.banner-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.75rem;
+    max-width: 90%;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(124, 206, 233, 0.1);
+}
+
+.feature-item:hover {
+    transform: translateX(5px);
+    background: rgba(124, 206, 233, 0.1);
+}
+
+.feature-item i {
+    color: #7ccee9;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+}
+
+.feature-item span {
+    color: #2c234d;
+    font-weight: 500;
+    font-size: clamp(0.75rem, 1.25vw, 0.875rem);
+}
+
+.course-inquiry-form {
+    background: #fff;
+    border-radius: 16px;
+    padding: clamp(1.25rem, 2.5vw, 1.75rem);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(124, 206, 233, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.header-icon {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(45deg, #7ccee9, #5c9ce6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.75rem;
+}
+
+.header-icon i {
+    font-size: 1.125rem;
+    color: #fff;
+}
+
+.inquiry-title {
+    color: #2c234d;
+    font-size: clamp(1.25rem, 2vw, 1.375rem);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.form-subtitle {
+    color: #6c757d;
+    font-size: clamp(0.75rem, 1.25vw, 0.875rem);
+    margin-bottom: 1.25rem;
+}
+
+.input-group {
+    position: relative;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-bottom: 0.875rem;
+}
+
+.input-group:focus-within {
+    border-color: #7ccee9;
+    box-shadow: 0 0 0 3px rgba(124, 206, 233, 0.1);
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #7ccee9;
+}
+
+.custom-input {
+    border: none !important;
+    padding: 0.75rem 0.75rem 0.75rem 2.25rem;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 0.875rem;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #7ccee9, #5c9ce6);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(92, 156, 230, 0.2);
+}
+
+.trust-badges {
+    margin-top: 1.25rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+}
+
+.badge-item {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: #6c757d;
+    font-size: 0.75rem;
+}
+
+.badge-item i {
+    color: #7ccee9;
+}
+
+/* Breadcrumb Styles */
+.breadcrumb-wrapper {
+    padding: 0.75rem 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-bottom: 0;
+    list-style: none;
+    background-color: transparent;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.breadcrumb-item a {
+    color: #5c9ce6;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: #2c234d;
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: #2c234d;
+    font-weight: 500;
+}
+
+.breadcrumb-item + .breadcrumb-item {
+    padding-left: 0.5rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    display: inline-block;
+    padding-right: 0.5rem;
+    color: #6c757d;
+    content: "/";
+}
+
+@media (max-width: 576px) {
+    .breadcrumb-wrapper {
+        padding: 0.5rem 0;
+    }
+    
+    .breadcrumb-item {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .page_title_banner {
+        min-height: auto;
+        padding: clamp(2rem, 4vh, 3rem) 0;
+    }
+
+    .banner-content {
+        text-align: center;
+        padding-right: 0;
+        margin: 0 auto 2rem;
+        padding: 0 1rem;
+    }
+    
+    .banner-description,
+    .banner-features {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .course-inquiry-form {
+        margin: 1rem auto;
+        max-width: 90%;
+    }
+
+    .banner-features {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+
+    .banner-container{
+        padding-top: 0;
+    }
+
+    .page_title_banner {
+        padding-top: 8rem;
+        min-height: auto;
+        height: fit-content;
+    }
+    
+    .banner-features {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        padding: 0 1rem;
+    }
+    
+    .course-inquiry-form {
+        padding: 1.25rem;
+        margin: 0.5rem 1rem;
+        max-width: calc(100% - 2rem);
+    }
+    
+    .trust-badges {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .feature-item {
+        justify-content: flex-start;
+        padding: 0.625rem;
+    }
+
+    .banner-description {
+        padding: 0 1rem;
+        font-size: 0.875rem;
+    }
+
+    .banner-title {
+        font-size: 1.75rem;
+        padding: 0 0.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.813rem;
+        padding: 0.375rem 0.75rem;
+    }
+
+    .form-header {
+        margin-bottom: 1rem;
+    }
+
+    .inquiry-title {
+        font-size: 1.25rem;
+    }
+
+    .form-subtitle {
+        font-size: 0.813rem;
+    }
+
+    .custom-input {
+        padding: 0.625rem 0.625rem 0.625rem 2rem;
+        font-size: 0.875rem;
+    }
+
+    .input-group {
+        margin-bottom: 0.75rem;
+    }
+
+    .submit-btn {
+        padding: 0.625rem;
+        font-size: 0.875rem;
+    }
+
+    .badge-item {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .page_title_banner {
+        margin-top: 50px;
+    }
+    
+    .banner-title {
+        font-size: 1.5rem;
+    }
+    
+    .course-inquiry-form {
+        padding: 1rem;
+    }
+    
+    .custom-input {
+        font-size: 0.813rem;
+    }
+
+    .feature-item {
+        padding: 0.5rem;
+    }
+
+    .feature-item span {
+        font-size: 0.75rem;
+    }
+
+    .header-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .trust-badges {
+        gap: 0.75rem;
+    }
+}
+
+/* Add touch-friendly improvements */
+@media (hover: none) {
+    .feature-item:hover {
+        transform: none;
+    }
+
+    .submit-btn:hover {
+        transform: none;
+    }
+
+    .input-group:focus-within {
+        transform: none;
+    }
+}
+
+/* Optimize for larger screens */
+@media (min-width: 1400px) {
+    .banner-content {
+        max-width: 650px;
+    }
+    
+    .course-inquiry-form {
+        max-width: 420px;
+    }
+}
+
+/* Add smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+</style>
+
+<script>
+document.getElementById('courseInquiryForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const form = this;
+    const submitBtn = form.querySelector('.submit-btn');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoader = submitBtn.querySelector('.btn-loader');
+    const messageDiv = form.querySelector('.form-message');
+    const alert = messageDiv.querySelector('.alert');
+    
+    submitBtn.disabled = true;
+    btnText.style.opacity = '0';
+    btnLoader.classList.remove('d-none');
+    
+    try {
+        const formData = new FormData(form);
+        const response = await fetch('{% url "course_inquiry" %}', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+            }
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            alert.className = 'alert alert-success';
+            alert.textContent = 'Thank you for your inquiry! We will contact you soon.';
+            form.reset();
+        } else {
+            alert.className = 'alert alert-danger';
+            alert.textContent = data.message || 'Something went wrong. Please try again.';
+        }
+    } catch (error) {
+        alert.className = 'alert alert-danger';
+        alert.textContent = 'An error occurred. Please try again later.';
+    } finally {
+        submitBtn.disabled = false;
+        btnText.style.opacity = '1';
+        btnLoader.classList.add('d-none');
+        messageDiv.style.display = 'block';
+        
+        setTimeout(() => {
+            messageDiv.style.display = 'none';
+        }, 5000);
+    }
+});
+</script> 

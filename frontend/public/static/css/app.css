@@ -9003,14 +9003,7 @@ animations
 }
 
 .book-demo-button {
-  background: #ffffff;
-  color: #0aa6d7 !important;
-  border: 2px solid #0aa6d7;
-}
-
-.book-demo-button:hover {
   background: #0aa6d7;
-  color: #ffffff !important;
 }
 
 .call-button {

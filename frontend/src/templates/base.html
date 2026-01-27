@@ -1,0 +1,774 @@
+<!-- COPILOT: Source Django template templates/base.html. Keep markup unchanged; used for React raw import. -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="robots" content="INDEX,FOLLOW">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Django Static CSS files -->
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/fontawesome/font-awesome.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/slickslider/slick.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/jquery-magnific-popup/jquery.magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/animate/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+  <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="{% static 'media/favicon/favicon.ico' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'media/favicon/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'media/favicon/favicon-16x16.png' %}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'media/favicon/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="192x192" href="{% static 'media/favicon/android-chrome-192x192.png' %}">
+  <link rel="icon" type="image/png" sizes="512x512" href="{% static 'media/favicon/android-chrome-512x512.png' %}">
+  <!-- Google Fonts source serif 4 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap"
+    rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- preloading critical image -->
+  <link rel="preload" as="image" href="{% static 'media/banners/hero-banner-1/hero-bg-1.webp' %}">
+  <!-- google search console -->
+  <meta name="google-site-verification" content="C1IW_xyB6fKSxFppxZ9-XCFsrEWywbwpjOGxOEieiXQ" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              light: '#9dddf0',
+              DEFAULT: '#7ccee9',
+              dark: '#5ba9c4',
+            },
+            secondary: {
+              light: '#f0f7fa',
+              DEFAULT: '#e1eef3',
+              dark: '#c4d8df',
+            },
+            accent: {
+              light: '#ffd480',
+              DEFAULT: '#ffb833',
+              dark: '#e69500',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Software Training Institute in Coimbatore",
+    "image": "https://www.yaleinfotech.com/static/media/resources/about-1.png",
+    "@id": "",
+    "url": "https://www.yaleinfotech.com/",
+    "telephone": "+91 6383277904",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1st Floor, 215, Bharathiyar Rd, Siddhapudur, New Siddhapudur,",
+      "addressLocality": "Coimbatore",
+      "postalCode": "641044",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 11.0164543,
+      "longitude": 76.9733636
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Tuesday",
+        "Monday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "06:00",
+      "closes": "11:00"
+    } 
+  }
+  </script>
+
+
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+          'gtm.start':
+            new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-T698Q38S');</script>
+  <!-- End Google Tag Manager -->
+
+
+
+  <style>
+    .floating-buttons {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      z-index: 1000;
+    }
+
+    .floating-button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Tooltip styles */
+    .floating-button::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      right: calc(100% + 15px);
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    /* Tooltip arrow */
+    .floating-button::before {
+      content: '';
+      position: absolute;
+      right: calc(100% + 9px);
+      top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-left-color: rgba(0, 0, 0, 0.8);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .floating-button:hover::after,
+    .floating-button:hover::before {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .book-demo-button {
+      background: #0aa6d7 !important;
+      background-color: #0aa6d7 !important;
+      box-shadow: 0 4px 15px rgba(10, 166, 215, 0.5) !important;
+    }
+
+    .book-demo-button svg {
+      fill: #fff !important;
+      color: #fff !important;
+    }
+
+    .call-button {
+      background: #0aa6d7 !important;
+      background-color: #0aa6d7 !important;
+      box-shadow: 0 4px 15px rgba(10, 166, 215, 0.5) !important;
+    }
+
+    .call-button svg {
+      fill: #fff !important;
+      color: #fff !important;
+    }
+
+    .whatsapp-button {
+      background: #25d366 !important;
+      background-color: #25d366 !important;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5) !important;
+    }
+
+    .whatsapp-button svg {
+      fill: #fff !important;
+      color: #fff !important;
+    }
+
+    .floating-button:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .floating-button i {
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .floating-button svg {
+      color: #fff;
+      fill: #fff;
+    }
+
+    @media (max-width: 767px) {
+      .floating-buttons {
+        right: 20px;
+        bottom: 20px;
+        gap: 12px;
+      }
+      
+      .floating-button {
+        width: 45px;
+        height: 45px;
+      }
+
+      .floating-button::after,
+      .floating-button::before {
+        display: none; /* Hide tooltips on mobile */
+      }
+
+      .floating-button i {
+        font-size: 18px;
+      }
+
+      .floating-button:hover {
+        transform: translateY(-3px);
+      }
+    }
+
+    /* Modal Styles */
+    .modal-content {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .modal-header {
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      background: rgba(34, 175, 219, 0.02);
+      border-radius: 15px 15px 0 0;
+    }
+
+    .modal-title {
+      color: #2c3e50;
+      font-weight: 600;
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+    }
+
+    .form-label {
+      color: #2c3e50;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      border-color: #22afdb;
+      box-shadow: 0 0 0 3px rgba(34, 175, 219, 0.1);
+    }
+
+    .btn-primary {
+      background: #22afdb;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-weight: 500;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: #1e9cc4;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(34, 175, 219, 0.2);
+    }
+
+    .btn-close {
+      opacity: 0.5;
+      transition: all 0.3s ease;
+    }
+
+    .btn-close:hover {
+      opacity: 1;
+      transform: rotate(90deg);
+    }
+
+    @media (max-width: 576px) {
+      .modal-dialog {
+        margin: 1rem;
+      }
+      
+      .modal-body {
+        padding: 1rem;
+      }
+    }
+
+    @media (min-width: 1200px) {
+        .main-menu__list .dropdown > a::after {
+            content: '\f107';
+            font-family: 'Font Awesome 5 Pro';
+            margin-left: 5px;
+            font-size: 14px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .main-menu__list .dropdown:hover > a::after {
+            transform: rotate(180deg);
+        }
+    }
+
+    .loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.3s ease-out;
+    }
+
+    .loader-wrapper.fade-out {
+      opacity: 0;
+    }
+
+    .loader {
+      width: 48px;
+      height: 48px;
+      border: 5px solid #22afdb;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      animation: loader 1s linear infinite;
+    }
+
+    @keyframes loader {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+
+</head>
+
+<body class="bg-white">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T698Q38S" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div class="floating-buttons">
+    <a href="/contact/" class="floating-button book-demo-button" data-tooltip="Book Demo">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#ffffff" viewBox="0 0 16 16">
+        <path fill="#ffffff" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+        <path fill="#ffffff" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+      </svg>
+    </a>
+    <a href="tel:+916383277904" class="floating-button call-button" data-tooltip="Call Us">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff" viewBox="0 0 16 16">
+        <path fill="#ffffff" fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+      </svg>
+    </a>
+    <a href="https://wa.me/916383277904" target="_blank" class="floating-button whatsapp-button" data-tooltip="WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#ffffff" viewBox="0 0 16 16">
+        <path fill="#ffffff" d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+      </svg>
+    </a>
+  </div>
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+  <!-- Header Area start -->
+  <header>
+    <nav class="main-menu">
+      <div class="container">
+        <div class="main-menu__block">
+          <div class="main-menu__left">
+
+            <div class="main-menu__logo">
+              <a href="{% url 'home' %}">
+                <img class="logo-img" src="{% static 'images/yale-it-logo.png' %}" alt="Yale IT Skill Hub"
+                  title="Yale IT Skill Hub">
+              </a>
+            </div>
+
+            <div class="main-menu__nav">
+              <ul class="main-menu__list">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li class="dropdown">
+                  <a href="javascript:void(0);">Courses</a>
+                  <ul>
+                    <li><a href="{% url 'python_training' %}">Full Stack Python Course</a></li>
+                    <li><a href="{% url 'java_training' %}">Full Stack Java Course</a></li>
+                    <li><a href="{% url 'full_stack_training' %}">Full Stack Developer Course</a></li>
+                    <li><a href="{% url 'digital_marketing_course' %}">Digital Marketing Course</a></li>
+                    <li><a href="{% url 'ui_ux_design_course' %}">UI UX Designer Course</a></li>
+                    <li><a href="{% url 'ai_course' %}">AI Course</a></li>
+                    <li><a href="{% url 'data_science_course' %}">Data Science Course</a></li>
+                    <li><a href="{% url 'cyber_security_course' %}">Cyber Security Course</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="javascript:void(0);">Services</a>
+                  <ul>
+                    <li><a href="{% url 'internship_training' %}">Internship Training</a></li>
+                    <li><a href="{% url 'final_year_project' %}">Final Year Project Center</a></li>
+                  </ul>
+                </li>
+                <li><a href="{% url 'blog_list' %}">Blog</a></li>
+                <li><a href="{% url 'contact_page'%}">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="main-menu__right">
+            <a href="tel:+916383277904" class="educate-btn sm d-xl-flex d-none"><span
+                class="educate-btn__curve"></span><i class="fal fa-phone-alt call-icon"></i>+91 63832 77904</a>
+            <a href="#" class="main-menu__toggler mobile-nav__toggler">
+              <i class="fa fa-bars"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- Sticky Header -->
+  <div class="stricky-header stricked-menu main-menu">
+    <div class="sticky-header__content"></div>
+  </div>
+  <!-- Header Area End  -->
+
+  <!-- Main Content -->
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <!-- Syllabus Download Modal -->
+  <div class="modal fade" id="syllabusModal" tabindex="-1" aria-labelledby="syllabusModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="syllabusModalLabel">Download Course Syllabus</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="syllabusForm">
+             
+            <input type="hidden" id="courseName" name="courseName">
+            <input type="hidden" id="syllabusPath" name="syllabusPath">
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="mobile" class="form-label">Mobile Number</label>
+              <input type="tel" class="form-control" id="mobile" name="mobile" pattern="[0-9]{10}" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Download Syllabus</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Area Start -->
+  <footer>
+    <div class="footer_main pt-60 pb-20">
+      <img src="{% static 'media/shapes/vector-7.png' %}" alt="shape" title="shape" class="vector_shape">
+      <img src="{% static 'media/shapes/dots-1.png' %}" alt="dots" title="dots" class="dots">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-3">
+            <div class="footer_widget">
+              <a href="{% url 'home' %}" class="mb-8 logo-img"><img src="{% static 'images/yale-it-logo.png' %}"
+                  alt="Yale IT Skill Hub" title="Yale IT Skill Hub"></a>
+              <p class="description_text">Yale IT Skill Hub in Coimbatore connects academic knowledge with real-world
+                skills, helping students secure high-paying jobs through expert training and industry-ready expertise.
+              </p>
+              <div class="bottom-row">
+                <ul class="unstyled social_icons_list">
+                  <li>
+                    <a target="_blank"
+                      href="https://www.instagram.com/yaleitskillhub_official?igsh=MXg4eGpuZGFiMDByZQ==">
+                      <img src="{% static 'media/icons/brands/Instagram.png' %}" alt="instagram" title="instagram">
+                    </a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="https://www.facebook.com/profile.php?id=61553544660223&mibextid=ZbWKwL">
+                      <img src="{% static 'media/icons/brands/Facebook.png' %}" alt="facebook" title="facebook">
+                    </a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="https://youtube.com/@yaleitskillhub?si=6c3C0uu3Q5XW_JVc">
+                      <img src="{% static 'media/icons/brands/youtube.png' %}" alt="youtube" title="youtube">
+                    </a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="https://www.linkedin.com/in/yaleit-skillhub-4311b6345/">
+                      <img src="{% static 'media/icons/brands/Linkedin.png' %}" alt="linkedin" title="linkedin">
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="footer_widget">
+              <h5 class="medium-black mb-16">Courses</h5>
+              <ul class="unstyled list">
+                <li><a href="{% url 'python_training' %}"><i class="fad fa-chevron-right"></i>Full Stack Python Course</a></li>
+                <li><a href="{% url 'java_training' %}"><i class="fad fa-chevron-right"></i>Full Stack Java Course</a></li>
+                <li><a href="{% url 'full_stack_training' %}"><i class="fad fa-chevron-right"></i>Full Stack Developer Course
+                    </a></li>
+                <li><a href="{% url 'digital_marketing_course' %}"><i class="fad fa-chevron-right"></i>Digital Marketing
+                    Course</a></li>
+                <li><a href="{% url 'ui_ux_design_course' %}"><i class="fad fa-chevron-right"></i>UI UX Designer
+                    Course</a></li>
+                <li><a href="{% url 'ai_course' %}"><i class="fad fa-chevron-right"></i>AI Course</a></li>
+                <li><a href="{% url 'data_science_course' %}"><i class="fad fa-chevron-right"></i>Data Science
+                    Course</a></li>
+                <li><a href="{% url 'cyber_security_course' %}"><i class="fad fa-chevron-right"></i>Cyber Security
+                    Course</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-2 col-lg-3 col-sm-6">
+            <div class="footer_widget">
+              <h5 class="medium-black mb-16">Quick Links</h5>
+              <ul class="unstyled list">
+                <li><a href="{% url 'about' %}"><i class="fad fa-chevron-right"></i>About Us</a></li>
+                <li><a href="{% url 'blog_list' %}"><i class="fad fa-chevron-right"></i>Blog</a></li>
+                <li><a href="#"><i class="fad fa-chevron-right"></i>Contact Us</a></li>
+              </ul>
+              
+            </div>
+            <div class="footer_widget">
+              <h5 class="medium-black mb-16">Services</h5>
+              <ul class="unstyled list">
+                <li><a href="{% url 'internship_training' %}"><i class="fad fa-chevron-right"></i>Internship Training</a></li>
+                <li><a href="{% url 'final_year_project' %}"><i class="fad fa-chevron-right"></i>Final year project</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- <div class="col-xl-2 col-lg-3 col-sm-6">
+           
+          </div> -->
+          <div class="col-lg-3 col-sm-6">
+            <div class="footer_widget">
+              <h5 class="medium-black mb-16">Contact Us</h5>
+              <ul class="unstyled list">
+                <li class="mb-16"><i class="fal fa-map-marker-alt"></i><a href="https://maps.app.goo.gl/wS9hYiCMVXATkWi68" target="_blank">1st Floor, 215, Bharathiyar Rd, Siddhapudur, New Siddhapudur, Coimbatore, Tamil Nadu 641044</a></li>
+                <li class="mb-16"><a href="mailto:info@example.com"><i class="fal fa-envelope"></i>
+                    admin@yaleinfotech.com</a></li>
+                <li><a href="tel:+916383277904"><i class="fal fa-phone-alt"></i>+91 6383277904</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copyright_row">
+      <p> 2024 Yale IT All Rights Reserved.</p>
+    </div>
+  </footer>
+  <!-- Footer Area End -->
+
+  <!-- Mobile Menu Start -->
+  <div class="mobile-nav__wrapper">
+    <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+    <div class="mobile-nav__content">
+      <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+      <div class="logo-box px-5">
+        <a href="/" aria-label="logo image"><img src="{% static 'images/yale-it-logo.png' %}" alt="Yale IT Skill Hub"
+            title="Yale IT Skill Hub"></a>
+      </div>
+      <div class="mobile-nav__container"></div>
+      <ul class="mobile-nav__contact list-unstyled">
+        <li>
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:admin@yaleitskillhub.com">admin@yaleitskillhub.com</a>
+        </li>
+        <li>
+          <i class="fa fa-phone-alt"></i>
+          <a href="tel:+916383277904">+91 6383277904</a>
+        </li>
+      </ul>
+      <div class="mobile-nav__social">
+        <a href="https://www.youtube.com/@yaleitskillhub?si=6c3C0uu3Q5XW_JVc"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/yaleitskillhub_official?igsh=MXg4eGpuZGFiMDByZQ=="><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61553544660223&mibextid=ZbWKwL"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/in/yaleit-skillhub-4311b6345/"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile Menu End -->
+
+  <div class="search-popup">
+    <div class="search-popup__overlay search-toggler"></div>
+    <div class="search-popup__content">
+      <form role="search" method="get" class="search-popup__form" action="{% url 'home' %}">
+        <input type="text" id="search" placeholder="Search Here...">
+        <button type="submit" class="search-popup__btn" aria-label="Search"><i class="fal fa-search"></i></button>
+      </form>
+    </div>
+  </div>
+  <!-- search-popup -->
+
+  <!-- JavaScript -->
+  <!-- Jquery Js -->
+  <script src="{% static 'vendor/jquery/jquery-3.6.3.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery-appear/jquery-appear.js' %}"></script>
+  <script src="{% static 'vendor/jquery-validator/jquery-validator.js' %}"></script>
+  <script src="{% static 'vendor/countdown/jquery.countdown.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery-magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'vendor/slickslider/slick.min.js' %}"></script>
+  <script src="{% static 'vendor/tilt/tilt.jquery.js' %}"></script>
+  <script src="{% static 'vendor/wow/wow.js' %}"></script>
+
+  <!-- Site Scripts -->
+  <script src="{% static 'js/app.js' %}"></script>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <style>
+    .developed-hover:hover {
+      color: #ffffff;
+    }
+  </style>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const loaderWrapper = document.querySelector('.loader-wrapper');
+      if (loaderWrapper) {
+        loaderWrapper.classList.add('fade-out');
+        setTimeout(() => {
+          loaderWrapper.style.display = 'none';
+        }, 300);
+      }
+    });
+  </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Handle syllabus download button clicks
+    const syllabusButtons = document.querySelectorAll('[data-syllabus]');
+    syllabusButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        const courseName = this.getAttribute('data-course-name');
+        const syllabusPath = this.getAttribute('data-syllabus');
+        document.getElementById('courseName').value = courseName;
+        document.getElementById('syllabusPath').value = syllabusPath;
+        document.getElementById('syllabusModalLabel').textContent = `Download ${courseName} Syllabus`;
+      });
+    });
+
+    // Handle form submission
+    const syllabusForm = document.getElementById('syllabusForm');
+    if (syllabusForm) {
+      syllabusForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(syllabusForm);
+        
+        // Show loading state
+        const submitBtn = syllabusForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Processing...';
+        submitBtn.disabled = true;
+        
+        // Send form data to server
+        fetch('{% url "syllabus_download" %}', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            // Trigger syllabus download
+            const link = document.createElement('a');
+            link.href = formData.get('syllabusPath');
+            link.setAttribute('target', '_blank');
+            link.download = `${formData.get('courseName').toLowerCase().replace(/\s+/g, '-')}-syllabus.pdf`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Close modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('syllabusModal'));
+            modal.hide();
+            
+            // Show success message
+            alert(data.message);
+            
+            // Reset form
+            syllabusForm.reset();
+          } else {
+            alert(data.message);
+          }
+        })
+        .catch(error => {
+          alert('An error occurred. Please try again later.');
+        })
+        .finally(() => {
+          // Restore button state
+          submitBtn.innerHTML = originalBtnText;
+          submitBtn.disabled = false;
+        });
+      });
+    }
+  });
+  </script>
+</body>
+
+</html>
