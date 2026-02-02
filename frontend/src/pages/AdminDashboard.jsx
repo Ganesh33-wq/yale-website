@@ -611,6 +611,8 @@ const AdminDashboard = () => {
               src="/static/images/yale-it-logo.png" 
               alt="Yale IT Skill Hub" 
               className="sidebar-logo-img"
+              width="120"
+              height="120"
             />
           </div>
         </div>
@@ -800,7 +802,7 @@ const AdminDashboard = () => {
                         className="form-file"
                       />
                       {imagePreview && (
-                        <img src={imagePreview} alt="Preview" className="image-preview" />
+                        <img src={imagePreview} alt="Preview" className="image-preview" width="200" height="120" />
                       )}
                     </div>
                   </div>
@@ -877,6 +879,8 @@ const AdminDashboard = () => {
                           src={blog.image ? `${blog.image}` : '/static/media/blog/default.jpg'} 
                           alt={blog.title}
                           className="blog-thumb"
+                          width="60"
+                          height="60"
                         />
                       </div>
                       <div className="table-cell title-cell" data-label="Title">

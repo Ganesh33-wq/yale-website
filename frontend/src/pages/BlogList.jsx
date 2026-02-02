@@ -279,7 +279,7 @@ const BlogList = () => {
       <div className="col-lg-4 col-md-6" key={post.id}>
         <div className="blog_card hover-up">
           <div className="blog_card_img_block">
-            <img src={post.featured_image} alt={post.title} />
+            <img src={post.featured_image} alt={post.title} width="400" height="250" />
             <div className="blog-meta">
               <span className="date">{post.created_at}</span>
               {post.category && <span className="category">{post.category.name}</span>}
@@ -292,7 +292,7 @@ const BlogList = () => {
             <p className="mb-24">{post.summary}</p>
             <div className="blog_card_footer">
               <div className="author">
-                <img src={post.author.avatar} alt={post.author.name} />
+                <img src={post.author.avatar} alt={post.author.name} width="40" height="40" />
                 <div className="author_info">
                   <h6 className="dark-gray mb-4p">{post.author.name}</h6>
                   <p className="small">{post.author.title}</p>

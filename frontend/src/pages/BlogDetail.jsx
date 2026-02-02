@@ -342,7 +342,7 @@ const BlogDetail = () => {
               <div class="blog_detail_content">
                 <!-- Featured Image -->
                 <div class="featured_image mb-32">
-                  <img src="${post.featured_image}" alt="${post.title}" class="img-fluid br-20">
+                  <img src="${post.featured_image}" alt="${post.title}" class="img-fluid br-20" width="800" height="400">
                 </div>
 
                 <!-- Post Title and Meta -->
@@ -392,7 +392,7 @@ const BlogDetail = () => {
                 <!-- Author Info -->
                 <div class="author_info_card mb-32">
                   <div class="author_avatar">
-                    <img src="${post.author.avatar}" alt="${post.author.name}">
+                    <img src="${post.author.avatar}" alt="${post.author.name}" width="40" height="40">
                   </div>
                   <div class="author_details">
                     <h6>${post.author.name}</h6>
@@ -461,7 +461,7 @@ const BlogDetail = () => {
                 <div class="col-lg-4 col-md-6">
                   <div class="blog_card hover-up">
                     <div class="blog_card_img_block">
-                      <img src="${rp.featured_image}" alt="${rp.title}">
+                      <img src="${rp.featured_image}" alt="${rp.title}" width="400" height="250">
                       <div class="blog-meta">
                         <span class="date">${rp.created_at}</span>
                         ${rp.category ? `<span class="category">${rp.category.name}</span>` : ''}
@@ -474,7 +474,7 @@ const BlogDetail = () => {
                       <p class="mb-24">${rp.summary}</p>
                       <div class="blog_card_footer">
                         <div class="author">
-                          <img src="${rp.author.avatar}" alt="${rp.author.name}">
+                          <img src="${rp.author.avatar}" alt="${rp.author.name}" width="40" height="40">
                           <div class="author_info">
                             <h6 class="dark-gray mb-4p">${rp.author.name}</h6>
                             <p class="small">${rp.author.title}</p>

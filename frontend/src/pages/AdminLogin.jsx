@@ -48,6 +48,8 @@ const AdminLogin = () => {
             src="/static/images/yale-it-logo.png" 
             alt="Yale IT Skill Hub" 
             style={styles.logo}
+            width="120"
+            height="120"
           />
         </div>
         <h2 style={styles.title}>Admin Login</h2>

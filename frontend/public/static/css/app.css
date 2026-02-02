@@ -432,11 +432,11 @@ strong {
   Helpers
 -------------------------*/
 .color-primary {
-  color: #2bac44 !important;
+  color: #0074a6 !important; /* Improved contrast for accessibility */
 }
 
 .bg-primary {
-  background-color: #0aa6d7 !important;
+  background-color: #005377 !important; /* Improved contrast for accessibility */
 }
 
 .color-primary-2 {
@@ -1840,7 +1840,7 @@ strong {
   transform: translateY(0);
 }
 
-.educate-btn {
+ .educate-btn {
   display: inline-block;
   vertical-align: middle;
   -webkit-appearance: none;
@@ -1861,6 +1861,8 @@ strong {
   -webkit-transition: all ease 0.3s;
   -moz-transition: all ease 0.3s;
   transition: all ease 0.3s;
+   min-width: 180px;
+   min-height: 44px;
 }
 .educate-btn .educate-btn__curve {
   position: absolute;
@@ -1907,8 +1909,10 @@ strong {
   color: #fefcfb !important;
   background: #0aa6d7;
 }
-.educate-btn.sm {
-  padding: 8px 16px;
+ .educate-btn.sm {
+   padding: 8px 16px;
+   min-width: 120px;
+   min-height: 36px;
 }
 
 .educate_link_btn {
