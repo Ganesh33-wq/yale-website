@@ -99,6 +99,17 @@
     <style> @font-face { font-display: swap; } </style>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
+    <!-- Suppress third-party resource errors and improve error handling -->
+    <script>
+      window.addEventListener('error', function(e) {
+        // Suppress errors from third-party resources (tagbox, tagembed, etc)
+        if (e.filename && (e.filename.includes('tagbox') || e.filename.includes('tagembed'))) {
+          console.warn('Third-party resource error suppressed:', e.filename);
+          return true;
+        }
+      }, true);
+    </script>
+
     <!-- Ensure elements are visible but allow animations -->
     <style>
       /* Initial state for AOS elements - hidden before animation */

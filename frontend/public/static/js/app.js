@@ -639,17 +639,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Event listeners for both mouse and touch
-    container.addEventListener('mousemove', handleMovement);
-    container.addEventListener('touchmove', handleMovement, { passive: true });
+    if (container) {
+        container.addEventListener('mousemove', handleMovement);
+        container.addEventListener('touchmove', handleMovement, { passive: true });
 
-    // Reset position when mouse/touch leaves
-    container.addEventListener('mouseleave', () => {
-        targetX = 0;
-        targetY = 0;
-        if (!animationFrame) {
-            animationFrame = requestAnimationFrame(updateParallax);
-        }
-    });
+        // Reset position when mouse/touch leaves
+        container.addEventListener('mouseleave', () => {
+            targetX = 0;
+            targetY = 0;
+            if (!animationFrame) {
+                animationFrame = requestAnimationFrame(updateParallax);
+            }
+        });
+    }
 });
 
 
