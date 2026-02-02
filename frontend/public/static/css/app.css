@@ -554,8 +554,8 @@ strong {
 
 .fm-sec {
   font-family: "Poppins", cursive !important;
-  color: #0aa6d7;
-  font-weight: 500;
+  color: #0088b8;
+  font-weight: 600;
   font-family: "Source Serif 4", serif !important;
   font-optical-sizing: auto !important;
   font-style: normal !important
@@ -7854,6 +7854,7 @@ animations
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.3s ease;
+    will-change: transform, opacity;
 }
 
 /* Position icons around hero content */

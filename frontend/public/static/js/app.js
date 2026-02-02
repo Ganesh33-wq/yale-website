@@ -234,6 +234,8 @@
         var cursorinner = document.querySelector(".custom-cursor__cursor-two");
         var a = document.querySelectorAll("a");
 
+        if (!cursor || !cursorinner) return;
+
         document.addEventListener("mousemove", function (e) {
           var x = e.clientX;
           var y = e.clientY;

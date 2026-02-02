@@ -75,13 +75,16 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Critical CSS (render-blocking, loaded immediately) -->
     <link rel="stylesheet" href="/static/vendor/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/static/vendor/fontawesome/font-awesome.css" />
-    <link rel="stylesheet" href="/static/vendor/slickslider/slick.css" />
-    <link rel="stylesheet" href="/static/vendor/jquery-magnific-popup/jquery.magnific-popup.css" />
-    <link rel="stylesheet" href="/static/vendor/animate/animate.min.css" />
     <link rel="stylesheet" href="/static/css/app.css" />
     <link rel="stylesheet" href="/static/css/sidebar.css" />
+
+    <!-- Non-critical CSS (deferred with media="print" + onload trick) -->
+    <link rel="stylesheet" href="/static/vendor/slickslider/slick.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="/static/vendor/jquery-magnific-popup/jquery.magnific-popup.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="/static/vendor/animate/animate.min.css" media="print" onload="this.media='all'" />
 
     <link rel="icon" type="image/x-icon" href="/static/media/favicon/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/static/media/favicon/favicon-32x32.png" />
@@ -183,6 +186,7 @@
 
     <div id="root"></div>
 
+    <!-- Defer vendor scripts for performance -->
     <script src="/static/vendor/jquery/jquery-3.6.3.min.js" defer></script>
     <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
     <script src="/static/vendor/jquery-appear/jquery-appear.js" defer></script>
