@@ -5,6 +5,7 @@ import cors from 'cors';
 import multer from 'multer';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import 'dotenv/config';
 import routes from './routes/index.js';
 
 const __filename = fileURLToPath(import.meta.url);

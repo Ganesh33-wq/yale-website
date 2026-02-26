@@ -1,5 +1,14 @@
 // Form Submissions Controller
 import db from '../database/db.js';
+import {
+  sendContactConfirmation,
+  sendContactAdminNotification,
+  sendCourseInquiryConfirmation,
+  sendCourseInquiryAdminNotification,
+  sendSyllabusDownloadEmail,
+  sendInternshipApplicationConfirmation,
+  sendInternshipApplicationAdminNotification
+} from '../utils/emailService.js';
 
 // ==================== CONTACT FORM ====================
 export const submitContact = (req, res) => {
@@ -16,6 +25,28 @@ export const submitContact = (req, res) => {
     `);
 
     const result = stmt.run(name, email, phone || '', subject || '', message || '');
+
+    // Send confirmation email to user
+    sendContactConfirmation({
+      name,
+      email,
+      phone: phone || 'N/A',
+      subject: subject || 'N/A',
+      message: message || 'N/A'
+    }).catch(err => {
+      console.log('Error sending user confirmation email:', err.message);
+    });
+
+    // Send notification email to admin
+    sendContactAdminNotification({
+      name,
+      email,
+      phone: phone || 'N/A',
+      subject: subject || 'N/A',
+      message: message || 'N/A'
+    }).catch(err => {
+      console.log('Error sending admin notification email:', err.message);
+    });
 
     res.json({
       success: true,
@@ -68,6 +99,28 @@ export const submitCourseInquiry = (req, res) => {
 
     const result = stmt.run(name, email, phone, course || '', message || '');
 
+    // Send confirmation email to user
+    sendCourseInquiryConfirmation({
+      name,
+      email,
+      phone,
+      course: course || 'N/A',
+      message: message || 'N/A'
+    }).catch(err => {
+      console.log('Error sending course inquiry user confirmation:', err.message);
+    });
+
+    // Send notification email to admin
+    sendCourseInquiryAdminNotification({
+      name,
+      email,
+      phone,
+      course: course || 'N/A',
+      message: message || 'N/A'
+    }).catch(err => {
+      console.log('Error sending course inquiry admin notification:', err.message);
+    });
+
     res.json({
       success: true,
       message: 'Thank you for your inquiry! Our team will contact you shortly.',
@@ -118,6 +171,15 @@ export const submitSyllabusDownload = (req, res) => {
     `);
 
     const result = stmt.run(name, email, phone, course || '');
+
+    // Send syllabus download email to user
+    sendSyllabusDownloadEmail({
+      name,
+      email,
+      course: course || 'N/A'
+    }).catch(err => {
+      console.log('Error sending syllabus download email:', err.message);
+    });
 
     res.json({
       success: true,
@@ -181,6 +243,37 @@ export const submitInternshipApplication = (req, res) => {
       hostel ? 1 : 0, 
       message || ''
     );
+
+    // Send confirmation email to user
+    sendInternshipApplicationConfirmation({
+      name,
+      email,
+      phone,
+      college: college || 'N/A',
+      department: department || 'N/A',
+      program: program || 'N/A',
+      duration: duration || 'N/A',
+      students: students || 1,
+      hostel: hostel ? 'Yes' : 'No'
+    }).catch(err => {
+      console.log('Error sending internship application confirmation:', err.message);
+    });
+
+    // Send notification email to admin
+    sendInternshipApplicationAdminNotification({
+      name,
+      email,
+      phone,
+      college: college || 'N/A',
+      city: city || 'N/A',
+      department: department || 'N/A',
+      program: program || 'N/A',
+      duration: duration || 'N/A',
+      students: students || 1,
+      hostel: hostel ? 'Yes' : 'No'
+    }).catch(err => {
+      console.log('Error sending internship application admin notification:', err.message);
+    });
 
     res.json({
       success: true,
